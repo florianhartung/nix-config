@@ -120,7 +120,7 @@
   users.users.root = {
     shell = pkgs.fish;
     hashedPasswordFile = "/persist/passwords/root";
-    packages = [ pkgs.helix pkgs.zellij pkgs.git ];
+    packages = with pkgs; [ helix zellij git direnv ];
   };
 
   programs.fish.enable = true;
