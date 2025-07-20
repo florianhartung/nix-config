@@ -6,16 +6,19 @@
 
 {
   imports = [
-    ../../nixosModules/virtualisation.nix
-    ../../nixosModules/impermanence.nix
+    ./hardware-configuration.nix
+    ../../nixosModules
   ];
 
+  impermanence = {
+    enable = true;
+    devPath = "/dev/nvme0n1p5";
+  };
 
   fileSystems."/".options = [ "compress=zstd" "noatime" ];
   fileSystems."/home".options = [ "compress=zstd" "noatime" ];
   fileSystems."/nix".options = [ "compress=zstd" "noatime" ];
   fileSystems."/persist".options = [ "compress=zstd" "noatime" ];
-  fileSystems."/persist".neededForBoot = true;
   # fileSystems."/boot".options =  [ "umask=0077" ];
 
   # fileSystems."/run/media/flo/backup-device" = {
