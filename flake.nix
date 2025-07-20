@@ -25,16 +25,19 @@
         overlays = [ devshell.overlays.default ];
       };
     in {
-      nixosConfigurations.desktop = lib.nixosSystem {
-        inherit system;
-        modules = [
-          ./hosts/desktop/configuration.nix
-        ];
-
-        specialArgs = { inherit inputs; };
+      nixosConfigurations = {
+        desktop = lib.nixosSystem {
+          inherit system;
+          modules = [ ./hosts/desktop/configuration.nix ];
+          specialArgs = { inherit inputs; };
+        };
+        homebase = lib.nixosSystem {
+          inherit system;
+          modules = [ ./hosts/homebase/configuration.nix ];
+          specialArgs = { inherit inputs; };
+        };
       };
-      devShells."${system}".default = (pkgs.devshell.mkShell {
-        packages = with pkgs; [ nixd nixfmt ];
-      });
+      devShells."${system}".default =
+        (pkgs.devshell.mkShell { packages = with pkgs; [ nixd nixfmt ]; });
     };
 }
