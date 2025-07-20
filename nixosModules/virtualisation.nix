@@ -4,7 +4,7 @@
 { config, pkgs, inputs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    qemu
+    # qemu
     # virt-manager
     # virt-viewer
     # spice
