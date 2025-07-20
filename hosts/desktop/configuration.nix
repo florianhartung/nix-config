@@ -13,6 +13,20 @@
   impermanence = {
     enable = true;
     devPath = "/dev/nvme0n1p5";
+    files = [
+      "/etc/machine-id"
+      # "/var/lib/NetworkManager/secret_key"
+      # "/var/lib/NetworkManager/seen-bssids"
+      # "/var/lib/NetworkManager/timestamps"
+    ];
+    directories = [
+      "/etc/nixos"
+      "/var/lib/nixos"
+      "/etc/NetworkManager/system-connections"
+      "/var/log"
+      "/root/.ssh"
+      # "/var/lib/bluetooth"
+    ];
   };
 
   fileSystems."/".options = [ "compress=zstd" "noatime" ];

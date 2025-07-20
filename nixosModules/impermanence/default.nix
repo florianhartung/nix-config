@@ -19,27 +19,22 @@ in {
       type = lib.types.str;
       example = "/dev/nvme0n1p5";
     };
+    files = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ ];
+      description = "list of file paths to persist";
+    };
+    directories = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ ];
+      description = "list of directory paths to persist";
+    };
   };
 
   config = lib.mkIf cfg.enable {
     fileSystems."/persist".neededForBoot = true;
 
-    environment.persistence."/persist" = {
-      directories = [
-        "/etc/nixos"
-        "/var/lib/nixos"
-        "/etc/NetworkManager/system-connections"
-        "/var/log"
-        "/root/.ssh"
-        # "/var/lib/bluetooth"
-      ];
-      files = [
-        "/etc/machine-id"
-        # "/var/lib/NetworkManager/secret_key"
-        # "/var/lib/NetworkManager/seen-bssids"
-        # "/var/lib/NetworkManager/timestamps"
-      ];
-    };
+    environment.persistence."/persist" = { inherit (cfg) files directories; };
 
     security.sudo.extraConfig = ''
       # rollback results in sudo lectures after each reboot
