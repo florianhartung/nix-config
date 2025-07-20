@@ -131,15 +131,17 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
     flo = {
-      isNormalUser = true;
-      extraGroups = [ "docker" "wheel" ];
       shell = pkgs.fish;
       hashedPasswordFile = "/persist/passwords/flo";
+      packages = with pkgs; [ helix zellij git direnv ];
+
+      isNormalUser = true;
+      extraGroups = [ "docker" "wheel" ];
     };
 
     root = {
-      hashedPasswordFile = "/persist/passwords/root";
       shell = pkgs.fish;
+      hashedPasswordFile = "/persist/passwords/root";
       packages = with pkgs; [ helix zellij git direnv ];
     };
   };
@@ -164,6 +166,7 @@
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
+    settings.PermitRootLogin = "yes";
   };
 
   # Open ports in the firewall.
