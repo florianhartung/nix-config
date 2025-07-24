@@ -22,7 +22,15 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [ devshell.overlays.default ];
+        overlays = [
+          devshell.overlays.default
+
+          (final: prev:
+            lib.filesystem.packagesFromDirectoryRecursive {
+              callPackage = lib.callPackageWith final;
+              directory = ./pkgs;
+            })
+        ];
       };
     in {
       nixosConfigurations = {
