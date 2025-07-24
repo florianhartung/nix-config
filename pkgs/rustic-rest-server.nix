@@ -1,7 +1,7 @@
 { lib, fetchFromGithub, rustPlatform, }:
 
 rustPlatform.buildRustPackage rec {
-  pname = "rustic_server";
+  pname = "rustic-rest-server";
   version = "0.4.4";
 
   src = fetchFromGithub {
@@ -22,7 +22,7 @@ rustPlatform.buildRustPackage rec {
     changelog =
       "https://github.com/rustic-rs/rustic_server/blob/${src.rev}/CHANGELOG.md";
     description = "A REST server built in rust for use with rustic/restic";
-    mainProgram = "restic_server";
+    mainProgram = "rustic_server";
     platforms = lib.platforms.linux ++ lib.platforms.darwin;
     license = [ lib.licenses.agpl3Only ];
     maintainers = [ ];

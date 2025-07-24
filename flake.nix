@@ -15,7 +15,10 @@
     devshell.url = "github:numtide/devshell";
   };
 
-  outputs = { nixpkgs, devshell, ... }@inputs:
+  outputs = { self, nixpkgs, devshell, ... }@inputs:
+    {
+      overlays.default = import ./overlays.nix;
+    } // (
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
@@ -25,11 +28,8 @@
         overlays = [
           devshell.overlays.default
 
-          (final: prev:
-            lib.filesystem.packagesFromDirectoryRecursive {
-              callPackage = lib.callPackageWith final;
-              directory = ./pkgs;
-            })
+          # (import ./overlays.nix)
+          self.overlays.default
         ];
       };
     in {
@@ -40,12 +40,12 @@
           specialArgs = { inherit inputs; };
         };
         homebase = lib.nixosSystem {
-          inherit system;
+          inherit system pkgs;
           modules = [ ./hosts/homebase/configuration.nix ];
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs; custom-pkgs = { inherit (pkgs) rustic-rest-server; }; };
         };
       };
       devShells."${system}".default =
         (pkgs.devshell.mkShell { packages = with pkgs; [ nixd nixfmt ]; });
-    };
+    });
 }
