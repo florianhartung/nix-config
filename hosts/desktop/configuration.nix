@@ -155,6 +155,8 @@
     solaar
     logitech-udev-rules
     swtpm
+    looking-glass-client
+    virt-manager
 
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
@@ -247,4 +249,8 @@
     "intel_iommu=on"
     "vfio-pci.ids=10de:1e84,10de:10f8,10de:1ad8,10de:1ad9"
   ];
+  systemd.tmpfiles.rules = [
+    "f /dev/shm/looking-glass 0660 flo qemu-libvirtd -"
+  ];
+  
 }
