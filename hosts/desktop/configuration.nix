@@ -22,6 +22,7 @@
     directories = [
       "/etc/nixos"
       "/var/lib/nixos"
+      "/var/lib/libvirt"
       "/etc/NetworkManager/system-connections"
       "/var/log"
       "/root/.ssh"
@@ -129,7 +130,7 @@
   users.users.flo = {
     isNormalUser = true;
     description = "Florian Hartung";
-    extraGroups = [ "audio" "networkmanager" ];
+    extraGroups = [ "audio" "networkmanager" "libvirtd" "kvm" ];
     shell = pkgs.fish;
     hashedPasswordFile = "/persist/passwords/flo";
   };
@@ -153,6 +154,7 @@
     # for logitech mouse
     solaar
     logitech-udev-rules
+    swtpm
 
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
@@ -209,4 +211,36 @@
     cpufreq.min = 1600000;
   };
 
+  # virtualisiation
+  programs.virt-manager.enable = true;
+  # users.groups.libvirtd.members = [ "flo" ];
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu = {
+        # package = pkgs.qemu_kvm;
+        # runAsRoot = true;
+        swtpm.enable = true;
+        ovmf = {
+          enable = true;
+          # packages = [(pkgs.OVMF.override {
+          #   secureBoot = true;
+          #   tpmSupport = true;
+          # }).fd];
+          packages = [ pkgs.OVMFFull.fd ];
+        };
+      };
+    };
+    # tpm.enable = true;
+    spiceUSBRedirection.enable = true;
+  };
+
+  # PCI/GPU passthrough
+  boot.initrd.kernelModules = [
+    "vfio_pci"
+    "vfio"
+    "vfio_iommu_type1"
+
+    "i915"
+  ];
 }
