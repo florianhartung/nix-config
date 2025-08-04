@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, rustic-rest-server, ... }:
 
 {
   imports = [
@@ -142,7 +142,7 @@
     root = {
       shell = pkgs.fish;
       hashedPasswordFile = "/persist/passwords/root";
-      packages = with pkgs; [ helix zellij git direnv ];
+      packages = with pkgs; [ helix zellij git direnv rustic-rest-server ];
     };
   };
 
@@ -188,4 +188,15 @@
 
   # hardware.graphics.enable = true;
   # services.xserver.videoDrivers = [ "modesetting" ];
+
+
+
+  services.dnsmasq = {
+    enable = true;
+    extraConfig = ''
+      domain-needed
+      bogus-priv
+
+    '';
+  };
 }
