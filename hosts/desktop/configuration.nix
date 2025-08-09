@@ -43,14 +43,14 @@
   # };
 
   # Bootloader.
-  # boot.loader.systemd-boot.enable = true;
-  boot.loader.grub = {
-    enable = true;
-    useOSProber = true;
-    efiSupport = true;
-    # device = "/dev/nvme0n1";
-    device = "nodev";
-  };
+  boot.loader.systemd-boot.enable = true;
+  # boot.loader.grub = {
+  #   enable = true;
+  #   useOSProber = true;
+  #   efiSupport = true;
+  #   # device = "/dev/nvme0n1";
+  #   device = "nodev";
+  # };
 
   boot.loader.efi.canTouchEfiVariables = true;
 
