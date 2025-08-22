@@ -188,4 +188,23 @@
 
   # hardware.graphics.enable = true;
   # services.xserver.videoDrivers = [ "modesetting" ];
+
+  # services.dnsmasq = {
+  #   enable = true;
+  #   extraConfig = ''
+  #     domain-needed
+  #     bogus-priv
+
+  #   '';
+  # };
+
+  services.auto-cpufreq = {
+    enable = true;
+    settings = {
+      charger = {
+        governor = "performance";
+        turbo = "always";
+      };
+    };
+  };
 }
