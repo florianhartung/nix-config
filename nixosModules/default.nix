@@ -1,3 +1,1 @@
-{ ... }: {
-  imports = [ ./virtualisation.nix ./impermanence ];
-}
+{ ... }: { imports = [ ./base.nix ./impermanence ./virtualisation.nix ]; }

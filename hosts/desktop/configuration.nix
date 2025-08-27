@@ -10,6 +10,8 @@
     ../../nixosModules
   ];
 
+  base.enable = true;
+
   impermanence = {
     enable = true;
     devPath = "/dev/nvme0n1p5";
@@ -42,28 +44,11 @@
   #   options = [ "nofail" "users" ];
   # };
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  # boot.loader.grub = {
-  #   enable = true;
-  #   useOSProber = true;
-  #   efiSupport = true;
-  #   # device = "/dev/nvme0n1";
-  #   device = "nodev";
-  # };
-
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  boot.kernelPackages = pkgs.linuxPackages;
+  # boot.kernelPackages = pkgs.linuxPackages;
   boot.supportedFilesystems = [ "ntfs-3g" ];
   # boot.initrd.kernelModules = ["i915"];
 
   services.pcscd.enable = true;
-
-
-  # Fix command-not-found for flakes <https://blog.nobbz.dev/2023-02-27-nixos-flakes-command-not-found/>
-  environment.etc."programs.sqlite".source = inputs.programsdb.packages.${pkgs.system}.programs-sqlite;
-  programs.command-not-found.dbPath = "/etc/programs.sqlite";
 
   networking.hostName = "desktop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -76,24 +61,24 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "Europe/Berlin";
+  # time.timeZone = "Europe/Berlin";
   # Necessary for dual boot
-  # time.hardwareClockInLocalTime = true;
+  time.hardwareClockInLocalTime = true;
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  # i18n.defaultLocale = "en_US.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "de_DE.UTF-8";
-    LC_IDENTIFICATION = "de_DE.UTF-8";
-    LC_MEASUREMENT = "de_DE.UTF-8";
-    LC_MONETARY = "de_DE.UTF-8";
-    LC_NAME = "de_DE.UTF-8";
-    LC_NUMERIC = "de_DE.UTF-8";
-    LC_PAPER = "de_DE.UTF-8";
-    LC_TELEPHONE = "de_DE.UTF-8";
-    LC_TIME = "de_DE.UTF-8";
-  };
+  # i18n.extraLocaleSettings = {
+  #   LC_ADDRESS = "de_DE.UTF-8";
+  #   LC_IDENTIFICATION = "de_DE.UTF-8";
+  #   LC_MEASUREMENT = "de_DE.UTF-8";
+  #   LC_MONETARY = "de_DE.UTF-8";
+  #   LC_NAME = "de_DE.UTF-8";
+  #   LC_NUMERIC = "de_DE.UTF-8";
+  #   LC_PAPER = "de_DE.UTF-8";
+  #   LC_TELEPHONE = "de_DE.UTF-8";
+  #   LC_TIME = "de_DE.UTF-8";
+  # };
 
   services.xserver = {
     # Enable the X11 windowing system.

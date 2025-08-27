@@ -10,6 +10,8 @@
     ../../nixosModules
   ];
 
+  base.enable = true;
+
   impermanence = {
     enable = true;
     devPath = "/dev/nvme0n1p3";
@@ -39,6 +41,7 @@
     ];
   };
 
+  # Hardware-specific configuration
   fileSystems."/".options = [ "compress=zstd" "noatime" ];
   fileSystems."/home".options = [ "compress=zstd" "noatime" ];
   fileSystems."/nix".options = [ "compress=zstd" "noatime" ];
@@ -54,24 +57,19 @@
 
   # Bootloader.
   # boot.loader.systemd-boot.enable = true;
-  boot.loader.grub = {
-    enable = true;
-    useOSProber = true;
-    efiSupport = true;
-    # device = "/dev/nvme0n1";
-    device = "nodev";
-  };
+  # boot.loader.grub = {
+  #   enable = true;
+  #   useOSProber = true;
+  #   efiSupport = true;
+  #   # device = "/dev/nvme0n1";
+  #   device = "nodev";
+  # };
 
-  boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelPackages = pkgs.linuxPackages;
+  # boot.kernelPackages = pkgs.linuxPackages;
   # boot.supportedFilesystems = [ "ntfs-3g" ];
   # boot.initrd.kernelModules = ["i915"];
-
-
-  # Fix command-not-found for flakes <https://blog.nobbz.dev/2023-02-27-nixos-flakes-command-not-found/>
-  environment.etc."programs.sqlite".source = inputs.programsdb.packages.${pkgs.system}.programs-sqlite;
-  programs.command-not-found.dbPath = "/etc/programs.sqlite";
 
   networking.hostName = "homebase"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -91,24 +89,24 @@
 
 
   # Set your time zone.
-  time.timeZone = "Europe/Berlin";
+  # time.timeZone = "Europe/Berlin";
   # Necessary for dual boot
   # time.hardwareClockInLocalTime = true;
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  # i18n.defaultLocale = "en_US.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "de_DE.UTF-8";
-    LC_IDENTIFICATION = "de_DE.UTF-8";
-    LC_MEASUREMENT = "de_DE.UTF-8";
-    LC_MONETARY = "de_DE.UTF-8";
-    LC_NAME = "de_DE.UTF-8";
-    LC_NUMERIC = "de_DE.UTF-8";
-    LC_PAPER = "de_DE.UTF-8";
-    LC_TELEPHONE = "de_DE.UTF-8";
-    LC_TIME = "de_DE.UTF-8";
-  };
+  # i18n.extraLocaleSettings = {
+  #   LC_ADDRESS = "de_DE.UTF-8";
+  #   LC_IDENTIFICATION = "de_DE.UTF-8";
+  #   LC_MEASUREMENT = "de_DE.UTF-8";
+  #   LC_MONETARY = "de_DE.UTF-8";
+  #   LC_NAME = "de_DE.UTF-8";
+  #   LC_NUMERIC = "de_DE.UTF-8";
+  #   LC_PAPER = "de_DE.UTF-8";
+  #   LC_TELEPHONE = "de_DE.UTF-8";
+  #   LC_TIME = "de_DE.UTF-8";
+  # };
 
   # services.displayManager.ly.enable = true;
   # programs.hyprland.enable = false;
@@ -226,19 +224,19 @@
     };
   };
 
-  nix = {
-    distributedBuilds = true;
-    settings = {
-      builders-use-substitutes = true;
-      experimental-features = [ "nix-command" "flakes" ];
-    };
-    buildMachines = [
-      {
-        hostName = "eu.nixbuild.net";
-        system = "x86_64-linux";
-        maxJobs = 100;
-        supportedFeatures = [ "benchmark" "big-parallel" ];
-      }
-    ];
-  };
+  # nix = {
+  #   distributedBuilds = true;
+  #   settings = {
+  #     builders-use-substitutes = true;
+  #     experimental-features = [ "nix-command" "flakes" ];
+  #   };
+  #   buildMachines = [
+  #     {
+  #       hostName = "eu.nixbuild.net";
+  #       system = "x86_64-linux";
+  #       maxJobs = 100;
+  #       supportedFeatures = [ "benchmark" "big-parallel" ];
+  #     }
+  #   ];
+  # };
 }
