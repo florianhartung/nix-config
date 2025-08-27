@@ -30,6 +30,8 @@
       "/etc/ssh/ssh_host_ed25519_key.pub"
       "/etc/ssh/ssh_host_rsa_key"
       "/etc/ssh/ssh_host_rsa_key.pub"
+      "/etc/ssh/my-nixbuild-key"
+      "/etc/ssh/my-nixbuild-key.pub"
 
       # "/var/lib/NetworkManager/secret_key"
       # "/var/lib/NetworkManager/seen-bssids"
@@ -184,7 +186,6 @@
   system.stateVersion = "24.11"; # Did you read the comment?
 
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # hardware.graphics.enable = true;
   # services.xserver.videoDrivers = [ "modesetting" ];
@@ -206,5 +207,38 @@
         turbo = "always";
       };
     };
+  };
+
+
+
+  programs.ssh.extraConfig = ''
+    Host eu.nixbuild.net
+    PubkeyAcceptedKeyTypes ssh-ed25519
+    ServerAliveInterval 60
+    IPQoS throughput
+    IdentityFile /etc/ssh/my-nixbuild-key
+  '';
+
+  programs.ssh.knownHosts = {
+    nixbuild = {
+      hostNames = [ "eu.nixbuild.net" ];
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPIQCZc54poJ8vqawd8TraNryQeJnvH1eLpIDgbiqymM";
+    };
+  };
+
+  nix = {
+    distributedBuilds = true;
+    settings = {
+      builders-use-substitutes = true;
+      experimental-features = [ "nix-command" "flakes" ];
+    };
+    buildMachines = [
+      {
+        hostName = "eu.nixbuild.net";
+        system = "x86_64-linux";
+        maxJobs = 100;
+        supportedFeatures = [ "benchmark" "big-parallel" ];
+      }
+    ];
   };
 }
