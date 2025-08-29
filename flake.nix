@@ -13,6 +13,11 @@
     impermanence.url = "github:nix-community/impermanence";
 
     devshell.url = "github:numtide/devshell";
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, devshell, ... }@inputs:

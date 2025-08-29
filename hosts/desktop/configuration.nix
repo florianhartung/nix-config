@@ -6,6 +6,7 @@
 
 {
   imports = [
+    inputs.lanzaboote.nixosModules.lanzaboote
     ./hardware-configuration.nix
     ../../nixosModules
   ];
@@ -28,6 +29,7 @@
       "/etc/NetworkManager/system-connections"
       "/var/log"
       "/root/.ssh"
+      "/var/lib/sbctl"
       # "/var/lib/bluetooth"
     ];
   };
@@ -44,8 +46,23 @@
   #   options = [ "nofail" "users" ];
   # };
 
-  # boot.kernelPackages = pkgs.linuxPackages;
+  # Bootloader.
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/var/lib/sbctl";
+  };
+
+  boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs-3g" ];
+  # boot.loader.systemd-boot.enable = true;
+  # boot.loader.grub = {
+  #   enable = true;
+  #   useOSProber = true;
+  #   efiSupport = true;
+  #   # device = "/dev/nvme0n1";
+  #   device = "nodev";
+  # };
+
   # boot.initrd.kernelModules = ["i915"];
 
   services.pcscd.enable = true;
