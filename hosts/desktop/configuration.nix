@@ -198,9 +198,16 @@
     open = false;
     package = config.boot.kernelPackages.nvidiaPackages.beta;
     # modesetting.enable = true;
-    # powerManagement.enable = true;
+    # powerManagement.enable = true; # unstable
     # powerManagement.finegrained = false; # for multi-gpu setups?
+    # prime = {
+      # sync.enable = true;
+      # amdgpuBusId = "PCI:120:0:0";
+      # nvidiaBusId = "PCI:1:0:0";
+    # };
   };
+  
+  boot.kernelParams = [ "module_blacklist=amdgpu" ];
   services.xserver.videoDrivers = [ "nvidia" ];
 
   programs.steam = {
