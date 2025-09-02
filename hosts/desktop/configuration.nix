@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, config, pkgs, inputs, ... }:
+{ lib, config, pkgs, pkgs-unstable, inputs, ... }:
 
 {
   imports = [
@@ -195,8 +195,8 @@
 
   hardware.graphics.enable = true;
   hardware.nvidia = {
-    open = true;
-    # package = config.boot.kernelPackages.nvidiaPackages.beta;
+    open = false;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
     # modesetting.enable = true;
     # powerManagement.enable = true;
     # powerManagement.finegrained = false; # for multi-gpu setups?
