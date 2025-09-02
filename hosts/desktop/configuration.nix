@@ -193,13 +193,13 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # hardware.graphics.enable = true;
+  hardware.graphics.enable = true;
   hardware.nvidia = {
-    open = false;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    powerManagement.finegrained = false; # for multi-gpu setups?
+    open = true;
+    # package = config.boot.kernelPackages.nvidiaPackages.beta;
+    # modesetting.enable = true;
+    # powerManagement.enable = true;
+    # powerManagement.finegrained = false; # for multi-gpu setups?
   };
   services.xserver.videoDrivers = [ "nvidia" ];
 
