@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -48,20 +48,20 @@
 
   # Bootloader.
   boot.lanzaboote = {
-    enable = true;
+    enable = false;
     pkiBundle = "/var/lib/sbctl";
   };
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs-3g" ];
-  # boot.loader.systemd-boot.enable = true;
-  # boot.loader.grub = {
-  #   enable = true;
-  #   useOSProber = true;
-  #   efiSupport = true;
-  #   # device = "/dev/nvme0n1";
-  #   device = "nodev";
-  # };
+  boot.loader.systemd-boot.enable = lib.mkForce false;
+  boot.loader.grub = {
+    enable = true;
+    useOSProber = true;
+    efiSupport = true;
+    # device = "/dev/nvme0n1";
+    device = "nodev";
+  };
 
   # boot.initrd.kernelModules = ["i915"];
 
