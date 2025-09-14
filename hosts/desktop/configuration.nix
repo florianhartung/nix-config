@@ -97,9 +97,9 @@
   #   LC_TIME = "de_DE.UTF-8";
   # };
 
-  services.xserver = {
     # Enable the X11 windowing system.
-    enable = true;
+  services.xserver.enable = true;
+  services = {
     # Enable the GNOME Desktop Environment.
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
@@ -195,9 +195,9 @@
 
   hardware.graphics.enable = true;
   hardware.nvidia = {
-    open = false;
+    modesetting.enable = true;
+    open = true;
     package = config.boot.kernelPackages.nvidiaPackages.beta;
-    # modesetting.enable = true;
     # powerManagement.enable = true; # unstable
     # powerManagement.finegrained = false; # for multi-gpu setups?
     # prime = {
@@ -207,7 +207,7 @@
     # };
   };
   
-  boot.kernelParams = [ "module_blacklist=amdgpu" ];
+  # boot.kernelParams = [ "module_blacklist=amdgpu" ];
   services.xserver.videoDrivers = [ "nvidia" ];
 
   programs.steam = {
