@@ -210,7 +210,11 @@
   hardware.nvidia = {
     modesetting.enable = true;
     open = true;
+<<<<<<< HEAD
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+=======
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
+>>>>>>> 681f927 (wip: nvidia testing)
     # powerManagement.enable = true; # unstable
     # powerManagement.finegrained = false; # for multi-gpu setups?
     # prime = {
@@ -219,7 +223,11 @@
     # nvidiaBusId = "PCI:1:0:0";
     # };
   };
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 681f927 (wip: nvidia testing)
   # boot.kernelParams = [ "module_blacklist=amdgpu" ];
   services.xserver.videoDrivers = [ "nvidia" ];
 
