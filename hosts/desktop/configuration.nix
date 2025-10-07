@@ -97,7 +97,7 @@
   #   LC_TIME = "de_DE.UTF-8";
   # };
 
-    # Enable the X11 windowing system.
+  # Enable the X11 windowing system.
   services.xserver.enable = true;
   services = {
     # Enable the GNOME Desktop Environment.
@@ -160,10 +160,10 @@
     looking-glass-client
     virt-manager
 
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-  #   helix
-  #   kitty
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
+    #   helix
+    #   kitty
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -190,23 +190,22 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
 
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   hardware.graphics.enable = true;
   hardware.nvidia = {
     modesetting.enable = true;
     open = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
     # powerManagement.enable = true; # unstable
     # powerManagement.finegrained = false; # for multi-gpu setups?
     # prime = {
-      # sync.enable = true;
-      # amdgpuBusId = "PCI:120:0:0";
-      # nvidiaBusId = "PCI:1:0:0";
+    # sync.enable = true;
+    # amdgpuBusId = "PCI:120:0:0";
+    # nvidiaBusId = "PCI:1:0:0";
     # };
   };
-  
+
   # boot.kernelParams = [ "module_blacklist=amdgpu" ];
   services.xserver.videoDrivers = [ "nvidia" ];
 
@@ -248,13 +247,17 @@
   };
 
   # PCI/GPU passthrough
-  # boot.initrd.kernelModules = [
-  #   "vfio_pci"
-  #   "vfio"
-  #   "vfio_iommu_type1"
+  boot.initrd.kernelModules = [
+    # "vfio_pci"
+    # "vfio"
+    # "vfio_iommu_type1"
 
-  #   "i915"
-  # ];
+    # "i915"
+    # "nvidia"
+    # "nvidia_modeset"
+    # "nvidia_uvm"
+    # "nvidia_drm"
+  ];
   # boot.kernelParams = [
   #   "intel_iommu=on"
   #   "vfio-pci.ids=10de:1e84,10de:10f8,10de:1ad8,10de:1ad9"
@@ -262,5 +265,5 @@
   # systemd.tmpfiles.rules = [
   #   "f /dev/shm/looking-glass 0660 flo qemu-libvirtd -"
   # ];
-  
+
 }
