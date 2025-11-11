@@ -43,6 +43,10 @@
           modules = [ ./hosts/homebase/configuration.nix ];
           specialArgs = { inherit inputs; };
         };
+        nixos-nas = lib.nixosSystem {
+          inherit system;
+          modules = [ ./hosts/nixos-nas/configuration.nix ];
+        };
       };
       devShells."${system}".default =
         (pkgs.devshell.mkShell { packages = with pkgs; [ nixd nixfmt ]; });

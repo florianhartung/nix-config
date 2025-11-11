@@ -47,21 +47,21 @@
   # };
 
   # Bootloader.
+  boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.lanzaboote = {
-    enable = false;
+    enable = true;
     pkiBundle = "/var/lib/sbctl";
   };
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs-3g" ];
-  boot.loader.systemd-boot.enable = lib.mkForce false;
-  boot.loader.grub = {
-    enable = true;
-    useOSProber = true;
-    efiSupport = true;
-    # device = "/dev/nvme0n1";
-    device = "nodev";
-  };
+  # boot.loader.grub = {
+  #   enable = true;
+  #   useOSProber = true;
+  #   efiSupport = true;
+  #   # device = "/dev/nvme0n1";
+  #   device = "nodev";
+  # };
 
   # boot.initrd.kernelModules = ["i915"];
 
@@ -74,8 +74,7 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+  programs.noisetorch.enable = true;
 
   # Set your time zone.
   # time.timeZone = "Europe/Berlin";
@@ -179,8 +178,20 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  # Open ports in the firewall.
-  networking.firewall.enable = true;
+  networking = {
+    # Open ports in the firewall.
+    firewall.enable = true;
+
+    networkmanager = {
+      # Enable networking
+      enable = true;
+
+      plugins = [
+        # Allow user to configure VPNs
+        pkgs.networkmanager-openconnect
+      ];
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
