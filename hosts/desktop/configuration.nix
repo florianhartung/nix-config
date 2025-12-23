@@ -276,5 +276,7 @@
   # systemd.tmpfiles.rules = [
   #   "f /dev/shm/looking-glass 0660 flo qemu-libvirtd -"
   # ];
+  #
+  services.nbd.server.enable = true;
 
 }
