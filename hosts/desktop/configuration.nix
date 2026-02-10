@@ -30,6 +30,7 @@
       "/var/log"
       "/root/.ssh"
       "/var/lib/sbctl"
+      "/var/lib/flatpak"
       # "/var/lib/bluetooth"
     ];
   };
@@ -181,6 +182,7 @@
   networking = {
     # Open ports in the firewall.
     firewall.enable = true;
+    firewall.allowedTCPPorts = [ 5201 ];
 
     networkmanager = {
       # Enable networking
@@ -224,6 +226,11 @@
     enable = true;
     extraCompatPackages = [ pkgs.proton-ge-bin ];
     localNetworkGameTransfers.openFirewall = true;
+    gamescopeSession.enable = true;
+  };
+  programs.gamescope = {
+    enable = true;
+    # capSysNice = true;
   };
 
   powerManagement = {
@@ -279,4 +286,5 @@
   #
   services.nbd.server.enable = true;
 
+  services.flatpak.enable = true;
 }
