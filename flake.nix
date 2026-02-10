@@ -29,7 +29,26 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [ devshell.overlays.default ];
+        overlays = [
+          devshell.overlays.default
+          (final: prev: {
+            steam = prev.steam.override {
+              extraPkgs = pkgs: with pkgs; [
+                xorg.libXcursor
+                xorg.libXi
+                xorg.libXinerama
+                xorg.libXScrnSaver
+                xorg.xkbcomp
+                libpng
+                libpulseaudio
+                libvorbis
+                stdenv.cc.cc.lib
+                libkrb5
+                keyutils
+              ];
+            };
+          })
+        ];
       };
     in {
       nixosConfigurations = {
