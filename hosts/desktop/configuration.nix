@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, config, pkgs, pkgs-unstable, inputs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -67,6 +67,7 @@
   # boot.initrd.kernelModules = ["i915"];
 
   services.pcscd.enable = true;
+  services.gvfs.enable = true;
 
   networking.hostName = "desktop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -284,7 +285,7 @@
   #   "f /dev/shm/looking-glass 0660 flo qemu-libvirtd -"
   # ];
   #
-  services.nbd.server.enable = true;
+  # services.nbd.server.enable = true;
 
   services.flatpak.enable = true;
 }
