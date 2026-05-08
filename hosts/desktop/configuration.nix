@@ -235,11 +235,10 @@
     enable = true;
     extraCompatPackages = [ pkgs.proton-ge-bin ];
     localNetworkGameTransfers.openFirewall = true;
-    gamescopeSession.enable = true;
   };
   programs.gamescope = {
     enable = true;
-    # capSysNice = true;
+    capSysNice = true;
   };
 
   powerManagement = {
@@ -281,9 +280,9 @@
 
     # "i915"
     # "nvidia"
-    # "nvidia_modeset"
+    "nvidia_modeset"
     # "nvidia_uvm"
-    # "nvidia_drm"
+    "nvidia_drm"
   ];
   # boot.kernelParams = [
   #   "intel_iommu=on"
