@@ -2,7 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, config, pkgs, inputs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -35,10 +41,22 @@
     ];
   };
 
-  fileSystems."/".options = [ "compress=zstd" "noatime" ];
-  fileSystems."/home".options = [ "compress=zstd" "noatime" ];
-  fileSystems."/nix".options = [ "compress=zstd" "noatime" ];
-  fileSystems."/persist".options = [ "compress=zstd" "noatime" ];
+  fileSystems."/".options = [
+    "compress=zstd"
+    "noatime"
+  ];
+  fileSystems."/home".options = [
+    "compress=zstd"
+    "noatime"
+  ];
+  fileSystems."/nix".options = [
+    "compress=zstd"
+    "noatime"
+  ];
+  fileSystems."/persist".options = [
+    "compress=zstd"
+    "noatime"
+  ];
   # fileSystems."/boot".options =  [ "umask=0077" ];
 
   # fileSystems."/run/media/flo/backup-device" = {
@@ -133,7 +151,12 @@
   users.users.flo = {
     isNormalUser = true;
     description = "Florian Hartung";
-    extraGroups = [ "audio" "networkmanager" "libvirtd" "kvm" ];
+    extraGroups = [
+      "audio"
+      "networkmanager"
+      "libvirtd"
+      "kvm"
+    ];
     shell = pkgs.fish;
     hashedPasswordFile = "/persist/passwords/flo";
   };
@@ -141,7 +164,12 @@
   users.users.root = {
     shell = pkgs.fish;
     hashedPasswordFile = "/persist/passwords/root";
-    packages = with pkgs; [ helix zellij git direnv ];
+    packages = with pkgs; [
+      helix
+      zellij
+      git
+      direnv
+    ];
   };
 
   programs.fish.enable = true;
@@ -160,6 +188,7 @@
     swtpm
     looking-glass-client
     virt-manager
+    gamescope-wsi
 
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
@@ -204,7 +233,10 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   hardware.graphics.enable = true;
   hardware.nvidia = {
@@ -234,11 +266,26 @@
   programs.steam = {
     enable = true;
     extraCompatPackages = [ pkgs.proton-ge-bin ];
+    package = pkgs.steam.override {
+      extraPkgs =
+        pkgs': with pkgs'; [
+          libXcursor
+          libXi
+          libXinerama
+          libXScrnSaver
+          libpng
+          libpulseaudio
+          libvorbis
+          stdenv.cc.cc.lib # Provides libstdc++.so.6
+          libkrb5
+          keyutils
+        ];
+    };
     localNetworkGameTransfers.openFirewall = true;
   };
   programs.gamescope = {
     enable = true;
-    capSysNice = true;
+    capSysNice = false; # broken with Steam
   };
 
   powerManagement = {

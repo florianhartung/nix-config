@@ -8,9 +8,9 @@ in {
     # Flakes
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
     # Fix command-not-found for flakes <https://blog.nobbz.dev/2023-02-27-nixos-flakes-command-not-found/>
-    environment.etc."programs.sqlite".source =
-      inputs.programsdb.packages.${pkgs.system}.programs-sqlite;
-    programs.command-not-found.dbPath = "/etc/programs.sqlite";
+    # environment.etc."programs.sqlite".source =
+    #   inputs.programsdb.packages.${pkgs.system}.programs-sqlite;
+    # programs.command-not-found.dbPath = "/etc/programs.sqlite";
 
     # TODO this should be the same for all hosts?
     boot.kernelPackages = pkgs.linuxPackages;
