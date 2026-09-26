@@ -32,6 +32,10 @@
       url = "github:nix-community/lanzaboote/v1.1.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # for home manager
     home-manager = {
@@ -63,6 +67,7 @@
       devshell,
       treefmt-nix,
       mutable-reproducible-config,
+      disko,
       ...
     }@inputs:
     let
@@ -94,14 +99,13 @@
           ];
           specialArgs = { inherit inputs; };
         };
-        homebase = lib.nixosSystem {
+
+        homeserver = lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/homebase/configuration.nix ];
-          specialArgs = { inherit inputs; };
-        };
-        nixos-nas = lib.nixosSystem {
-          inherit system;
-          modules = [ ./hosts/nixos-nas/configuration.nix ];
+          modules = [
+            disko.nixosModules.disko
+            ./hosts/homeserver/configuration.nix
+          ];
         };
       };
       homeConfigurations = {
