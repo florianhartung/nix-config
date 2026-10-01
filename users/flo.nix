@@ -18,7 +18,6 @@
 
     # other stuff
     gpg.enable = true;
-    java.enable = true;
   };
 
   # todo merge into programs
