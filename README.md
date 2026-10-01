@@ -1,3 +1,4 @@
-# My home manager config
+# My Nix Config (NixOS + Home Manager)
 
-Put this into `~/.config/home-manager`
+> [!WARNING]
+> All of this is very much WIP
