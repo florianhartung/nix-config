@@ -29,6 +29,9 @@
 
   modules = {
     base.enable = true;
+    # This lets other modules symlink their configs from this repo into the home
+    # directory, while leaving them mutable.
+    mutSymlink.enable = true;
 
     alacritty.enable = true;
     discord.enable = true;

@@ -8,6 +8,7 @@
     ./firefox
     ./fonts.nix
     ./gde-stuff.nix
+    ./mutable-symlinks.nix
     ./rustic.nix
     ./vscodium
     ./zed

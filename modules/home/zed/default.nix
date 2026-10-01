@@ -1,4 +1,5 @@
 {
+  pkgs,
   pkgs-unstable,
   config,
   lib,
@@ -14,5 +15,7 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = [ pkgs-unstable.zed-editor ];
+
+    xdg.configFile."zed".source = pkgs.mkMutSymlink "modules/home/zed/config";
   };
 }

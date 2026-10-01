@@ -1,0 +1,9 @@
+{
+  "Link To WebAssembly Specification": {
+    "prefix": "link wasm",
+    "body": [
+      "[WebAssembly Specification 2.0 - $1](${2:https://www.w3.org/TR/2025/CRD-wasm-core-2-20250616/})",
+      "$0"
+    ]
+  }
+}
