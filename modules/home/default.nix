@@ -1,16 +1,21 @@
 { ... }:
 {
   imports = [
-    ./alacritty.nix
-    ./base.nix # todo split up and make a base preset
-    ./common # todo split this into separate modules
+    # Opinionated configurations that should be the default for everyone
+    ./core-user.nix
+
+    ./mutable-symlinks
+    ./opinionated
+
     ./discord
     ./firefox
+    ./fish.nix
     ./fonts.nix
     ./gde-stuff.nix
-    ./mutable-symlinks.nix
+    ./helix
+    ./home-manager-support.nix
     ./rustic.nix
     ./vscodium
-    ./zed
+    ./zellij
   ];
 }

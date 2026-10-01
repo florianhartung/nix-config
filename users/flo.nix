@@ -5,35 +5,29 @@
   ...
 }:
 {
+  imports = [ ../modules/home ];
+
   home.username = "flo";
   home.homeDirectory = "/home/flo";
   home.stateVersion = "25.05"; # shouldn't be changed ever
 
-  nixpkgs.config.allowUnfree = true;
+  programs = {
+    alacritty.enableMutableSymlinks = true;
+    git = {
+      enableOpinionatedConfig = true;
+      settings.user = {
+        name = "Florian Hartung";
+        email = lib.mkDefault "60144801+florianhartung@users.noreply.github.com";
+      };
+    };
+    zed-editor.enableMutableSymlinks = true;
 
-  # programs.kitty.enable = true;
-
-  # home.keyboard = {
-  #   layout = "us";
-  #   variant = "altgr-intl";
-  #   options = [ "terminate:ctrl_alt_bksp" "caps:escape" ];
-  # };
-
-  imports = [ ../modules/home ];
-
-  home.shellAliases = {
-    cdg = "cd ~/git";
-    cdm = "cd ~/git/florianhartung";
-    hswitch = "home-manager switch";
+    # other stuff
+    gpg.enable = true;
+    java.enable = true;
   };
 
   modules = {
-    base.enable = true;
-    # This lets other modules symlink their configs from this repo into the home
-    # directory, while leaving them mutable.
-    mutSymlink.enable = true;
-
-    alacritty.enable = true;
     discord.enable = true;
     firefox.enable = true;
     fonts.enable = true;
@@ -42,10 +36,14 @@
       mouse-speed = 0.58;
     };
     vscodium.enable = true;
-    zed.enable = true;
   };
 
-  xdg.enable = true;
+  # home.keyboard = {
+  #   layout = "us";
+  #   variant = "altgr-intl";
+  #   options = [ "terminate:ctrl_alt_bksp" "caps:escape" ];
+  # };
+
   xdg.desktopEntries = {
     looking-glass-fix = {
       type = "Application";
@@ -64,11 +62,6 @@
     enableSshSupport = true;
     pinentry.package = pkgs.pinentry-gnome3;
   };
-  programs.gpg = {
-    enable = true;
-  };
-
-  programs.java.enable = true;
 
   # Workaround: Sometimes gnome-volume-control crashes, which causes this to be set to true.
   home.activation.unset-disable-user-extensions = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
@@ -129,6 +122,7 @@
 
     pkgs-unstable.zulip # electron on stable is insecure (version is EOL)
     rssguard
+    wl-clipboard
 
     ## network analysis
     # wireshark

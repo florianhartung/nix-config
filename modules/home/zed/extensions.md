@@ -1,4 +1,0 @@
-- TOML
-- Tokyo Night Themes
-- Nix
-- Material Icon Theme
