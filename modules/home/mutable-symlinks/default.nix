@@ -10,6 +10,7 @@ in
 {
   imports = [
     ./alacritty
+    ./firefox
     ./zed-editor
   ];
 

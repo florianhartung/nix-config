@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgs-unstable,
   config,
   lib,
   inputs,
@@ -8,22 +7,19 @@
   ...
 }:
 let
-  cfg = config.modules.firefox;
+  cfgEnable = config.programs.firefox.enableOpinionatedConfig;
 in
 {
-  options.modules.firefox = {
-    enable = lib.mkEnableOption "firefox";
-  };
+  options.programs.firefox.enableOpinionatedConfig = lib.mkEnableOption "opinionated config for firefox";
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf cfgEnable {
     programs.firefox = {
       enable = true;
-      package = pkgs-unstable.firefox;
       configPath = "${config.xdg.configHome}/mozilla/firefox";
       profiles.default = {
         # Only load bookmarks on initial setup
         # bookmarks = import ./bookmarks.nix;
-        settings = import ./settings.nix { inherit config project-lib; };
+        # settings = import ./settings.nix { inherit config project-lib; };
         extensions.packages = import ./extensions.nix {
           inherit pkgs;
           inherit (inputs) firefox-addons;

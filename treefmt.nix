@@ -6,6 +6,9 @@
   programs.nixfmt.enable = true;
   programs.prettier = {
     enable = true;
-    includes = [ "*.md" ];
+    includes = [
+      "*.md"
+      "*.js"
+    ];
   };
 }

@@ -7,6 +7,10 @@
 {
   programs = {
     alacritty.enableMutableSymlinks = true;
+    firefox = {
+      enableOpinionatedConfig = true;
+      enableMutableSymlinks = true;
+    };
     git = {
       enableOpinionatedConfig = true;
       settings.user = {
@@ -23,7 +27,6 @@
   # todo merge into programs
   modules = {
     discord.enable = true;
-    firefox.enable = true;
     fonts.enable = true;
     gde-stuff = {
       enable = true;

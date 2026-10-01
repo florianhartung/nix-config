@@ -8,7 +8,6 @@
     ./opinionated
 
     ./discord
-    ./firefox
     ./fish.nix
     ./fonts.nix
     ./gde-stuff.nix
