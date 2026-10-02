@@ -8,16 +8,17 @@
   programs = {
     alacritty.enableMutableSymlinks = true;
     firefox = {
-      enableOpinionatedConfig = true;
+      enableWithOpinionatedConfig = true;
       enableMutableSymlinks = true;
     };
     git = {
-      enableOpinionatedConfig = true;
+      enableWithOpinionatedConfig = true;
       settings.user = {
         name = "Florian Hartung";
         email = lib.mkDefault "60144801+florianhartung@users.noreply.github.com";
       };
     };
+    ssh.enableWithOpinionatedConfig = true;
     zed-editor.enableMutableSymlinks = true;
 
     # other stuff

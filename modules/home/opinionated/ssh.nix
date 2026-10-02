@@ -1,6 +1,11 @@
-{ ... }: {
+{
+  config,
+  lib,
+  ...
+}:
+import ./mkEnableWithOpinionatedConfigModule.nix { inherit config lib; } [ "programs" "ssh" ] {
   programs.ssh = {
-    enable = true;
+    enableDefaultConfig = false;
     settings = {
       "gh" = {
         HostName = "github.com";
