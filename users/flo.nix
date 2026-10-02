@@ -1,7 +1,6 @@
 {
   pkgs,
   pkgs-unstable,
-  lib,
   ...
 }:
 {
@@ -15,7 +14,7 @@
       enableWithOpinionatedConfig = true;
       settings.user = {
         name = "Florian Hartung";
-        email = lib.mkDefault "60144801+florianhartung@users.noreply.github.com";
+        email = "60144801+florianhartung@users.noreply.github.com";
       };
     };
     ssh.enableWithOpinionatedConfig = true;
@@ -25,7 +24,7 @@
     gpg.enable = true;
   };
 
-  # todo merge into programs
+  # TODO: merge into programs
   modules = {
     discord.enable = true;
     fonts.enable = true;
@@ -49,7 +48,7 @@
     obsidian
     openconnect
     prismlauncher
-    pkgs-unstable.zulip # unstable: electron on stable is insecure (version is EOL)
+    pkgs-unstable.zulip # electron is insecure on stable (version is EOL)
     quickemu
     rssguard
     spotify
