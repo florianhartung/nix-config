@@ -19,6 +19,6 @@ in
     ];
 
     programs.zed-editor.enable = true;
-    xdg.configFile."zed".source = pkgs.mkMutSymlinkFromBuiltInModuleRoot "zed-editor/config";
+    # xdg.configFile."zed".source = pkgs.mkMutSymlinkFromBuiltInModuleRoot "zed-editor/config";
   };
 }

@@ -4,6 +4,7 @@
     # Opinionated configurations that should be the default for everyone
     ./core-user.nix
 
+    ./dotfile-handling
     ./mutable-symlinks
     ./opinionated
 

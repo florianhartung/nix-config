@@ -1,11 +1,15 @@
 {
+  config,
   pkgs,
   pkgs-unstable,
   ...
 }:
 {
   programs = {
-    alacritty.enableMutableSymlinks = true;
+    alacritty = {
+      enableSpecialConfigHandling = true;
+      enableWithOpinionatedConfig = true;
+    };
     firefox = {
       enableWithOpinionatedConfig = true;
       enableMutableSymlinks = true;
@@ -18,7 +22,12 @@
       };
     };
     ssh.enableWithOpinionatedConfig = true;
-    zed-editor.enableMutableSymlinks = true;
+    zed-editor = {
+      enableSpecialConfigHandling = true;
+      userSettings = {
+        buffer_font_size = 19;
+      };
+    };
 
     # other stuff
     gpg.enable = true;
@@ -65,6 +74,10 @@
     };
     easyeffects.enable = true;
   };
+
+  # This is the directory where those diffs of mutable dotfiles will go, before
+  # they are overwritten during home activation.
+  backupDirectoryForDotfileDiffs = "${config.xdg.configHome}/home-manager/modules/home/dotfile-handling/backup-diffs/";
 
   # Welcome to the corner of stuff that is never really touched :D
   imports = [ ../modules/home ];
