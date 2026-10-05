@@ -16,7 +16,13 @@
     };
 
     # for NixOS
-    impermanence.url = "github:nix-community/impermanence";
+    impermanence = {
+      url = "github:nix-community/impermanence";
+      inputs = {
+        nixpkgs.follows = "";
+        home-manager.follows = "";
+      };
+    };
     programsdb = {
       url = "github:wamserma/flake-programs-sqlite";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,6 +41,14 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mutable-reproducible-config = {
+      url = "github:florianhartung/mutable-reproducible-config";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        devshell.follows = "";
+        treefmt-nix.follows = "";
+      };
+    };
   };
 
   outputs =
@@ -45,6 +59,7 @@
       home-manager,
       devshell,
       treefmt-nix,
+      mutable-reproducible-config,
       ...
     }@inputs:
     let
@@ -85,7 +100,10 @@
       homeConfigurations = {
         "flo" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ ./users/flo.nix ];
+          modules = [
+            ./users/flo.nix
+            mutable-reproducible-config.homeModules.default
+          ];
           extraSpecialArgs = { inherit inputs pkgs-unstable project-lib; };
         };
         "hart_fo" = home-manager.lib.homeManagerConfiguration {

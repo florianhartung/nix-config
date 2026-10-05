@@ -7,8 +7,8 @@
 {
   programs = {
     alacritty = {
-      enableSpecialConfigHandling = true;
       enableWithOpinionatedConfig = true;
+      mutableAndReproducibleSettings = true;
     };
     firefox = {
       enableWithOpinionatedConfig = true;
@@ -23,9 +23,10 @@
     };
     ssh.enableWithOpinionatedConfig = true;
     zed-editor = {
-      enableSpecialConfigHandling = true;
+      enable = true;
+      mutableAndReproducibleUserSettings = true;
       userSettings = {
-        buffer_font_size = 19;
+        buffer_font_size = 20;
       };
     };
 
@@ -77,7 +78,7 @@
 
   # This is the directory where those diffs of mutable dotfiles will go, before
   # they are overwritten during home activation.
-  backupDirectoryForDotfileDiffs = "${config.xdg.configHome}/home-manager/modules/home/dotfile-handling/backup-diffs/";
+  mutableReproducibleConfig.backupDirectoryForDiffs = "${config.xdg.configHome}/home-manager/backup-diffs/";
 
   # Welcome to the corner of stuff that is never really touched :D
   imports = [ ../modules/home ];
