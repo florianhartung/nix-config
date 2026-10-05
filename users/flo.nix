@@ -12,7 +12,7 @@
     };
     firefox = {
       enableWithOpinionatedConfig = true;
-      enableMutableSymlinks = true;
+      mutableAndReproducibleSettings = true;
     };
     git = {
       enableWithOpinionatedConfig = true;
@@ -23,11 +23,8 @@
     };
     ssh.enableWithOpinionatedConfig = true;
     zed-editor = {
-      enable = true;
+      enableWithOpinionatedConfig = true;
       mutableAndReproducibleUserSettings = true;
-      userSettings = {
-        buffer_font_size = 20;
-      };
     };
 
     # other stuff
@@ -78,7 +75,7 @@
 
   # This is the directory where those diffs of mutable dotfiles will go, before
   # they are overwritten during home activation.
-  mutableReproducibleConfig.backupDirectoryForDiffs = "${config.xdg.configHome}/home-manager/backup-diffs/";
+  mutableReproducibleConfig.backupDirectoryForDiffs = "${config.xdg.configHome}/home-manager/modules/home/backup-diffs/";
 
   # Welcome to the corner of stuff that is never really touched :D
   imports = [ ../modules/home ];

@@ -43,6 +43,7 @@
     };
     mutable-reproducible-config = {
       url = "github:florianhartung/mutable-reproducible-config";
+      # url = "path:/home/flo/git/florianhartung/mutable-reproducible-config";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         devshell.follows = "";

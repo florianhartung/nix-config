@@ -3,6 +3,7 @@
   config,
   lib,
   inputs,
+  project-lib,
   ...
 }:
 import ../mkEnableWithOpinionatedConfigModule.nix { inherit config lib; } [ "programs" "firefox" ] {
@@ -11,7 +12,7 @@ import ../mkEnableWithOpinionatedConfigModule.nix { inherit config lib; } [ "pro
     profiles.default = {
       # Only load bookmarks on initial setup
       # bookmarks = import ./bookmarks.nix;
-      # settings = import ./settings.nix { inherit config project-lib; };
+      settings = import ./settings.nix { inherit config project-lib; };
       extensions.packages = import ./extensions.nix {
         inherit pkgs;
         inherit (inputs) firefox-addons;

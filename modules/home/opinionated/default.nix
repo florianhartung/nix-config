@@ -5,5 +5,6 @@
     ./firefox
     ./git.nix
     ./ssh.nix
+    ./zed-editor.nix
   ];
 }
