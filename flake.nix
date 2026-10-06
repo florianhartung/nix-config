@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-2505.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # for devshell
@@ -56,6 +57,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-2505,
       nixpkgs-unstable,
       home-manager,
       devshell,
@@ -71,6 +73,10 @@
       pkgs = import nixpkgs {
         inherit system;
         overlays = [ devshell.overlays.default ];
+        config.allowUnfree = true;
+      };
+      pkgs-2505 = import nixpkgs-2505 {
+        inherit system;
         config.allowUnfree = true;
       };
       pkgs-unstable = import nixpkgs-unstable {
@@ -105,7 +111,14 @@
             ./users/flo.nix
             mutable-reproducible-config.homeModules.default
           ];
-          extraSpecialArgs = { inherit inputs pkgs-unstable project-lib; };
+          extraSpecialArgs = {
+            inherit
+              inputs
+              pkgs-2505
+              pkgs-unstable
+              project-lib
+              ;
+          };
         };
         "hart_fo" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;

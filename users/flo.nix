@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgs-2505,
   pkgs-unstable,
   ...
 }:
@@ -62,6 +63,7 @@
     steam
     vlc
     yubioath-flutter
+    pkgs-2505.citrix_workspace
   ];
 
   services = {
