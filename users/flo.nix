@@ -11,6 +11,10 @@
       enableWithOpinionatedConfig = true;
       mutableAndReproducibleSettings = true;
     };
+    bat = {
+      enable = true;
+      config.pager = "ov --quit-if-one-screen";
+    };
     firefox = {
       enableWithOpinionatedConfig = true;
       mutableAndReproducibleSettings = true;
