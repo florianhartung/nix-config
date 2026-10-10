@@ -22,6 +22,10 @@
         email = "60144801+florianhartung@users.noreply.github.com";
       };
     };
+    ov = {
+      enable = true;
+      package = pkgs-unstable.ov;
+    };
     ssh.enableWithOpinionatedConfig = true;
     zed-editor = {
       enableWithOpinionatedConfig = true;

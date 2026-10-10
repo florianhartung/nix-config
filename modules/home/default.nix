@@ -11,6 +11,7 @@
     ./fonts.nix
     ./gde-stuff.nix
     ./helix
+    ./ov.nix
     ./rustic.nix
     ./vscodium
     ./zellij
