@@ -10,9 +10,6 @@
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
   programs.git.enable = true;
-  home.shellAliases = {
-    hswitch = "home-manager switch";
-  };
 
   # IDK
   nixpkgs.config.allowUnfree = true;

@@ -19,6 +19,7 @@
       enableWithOpinionatedConfig = true;
       mutableAndReproducibleSettings = true;
     };
+    fish.enableWithOpinionatedConfig = true;
     git = {
       enableWithOpinionatedConfig = true;
       settings.user = {
