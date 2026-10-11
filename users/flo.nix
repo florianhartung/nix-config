@@ -27,7 +27,7 @@
       };
     };
     ov = {
-      enable = true;
+      enableWithOpinionatedConfig = true;
       package = pkgs-unstable.ov;
     };
     ssh.enableWithOpinionatedConfig = true;

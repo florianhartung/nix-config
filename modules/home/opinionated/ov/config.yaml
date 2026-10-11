@@ -1,0 +1,18 @@
+# Special key
+#   "Enter","Backspace","Tab","Backtab","Esc",
+#   "Delete", "Insert",
+#   "Up", "Down", "Left", "Right", "Home", "End",
+#   "F1...F64"
+# Modifier key
+#   "ctrl", "alt", "meta", "shift"
+# Connect with modifier key + key
+#   "ctrl+c"
+KeyBind:
+    down:
+        - "j"
+        # DEFAULTS: "Enter", "Down", "ctrl+n"
+    jump_target:
+        - "J"
+    up:
+        - "k"
+        # DEFAULTS: "Up", "ctrl+p"
