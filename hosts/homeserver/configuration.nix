@@ -43,6 +43,7 @@
       "/var/lib/nixos"
       "/etc/NetworkManager/system-connections"
       "/var/log"
+      "/root/.ssh"
     ];
   };
 
