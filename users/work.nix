@@ -1,15 +1,25 @@
 {
+  config,
   pkgs,
   pkgs-2505,
+  pkgs-unstable,
   ...
 }:
 {
   programs = {
-    alacritty.enableMutableSymlinks = true;
+    alacritty = {
+      enableWithOpinionatedConfig = true;
+      mutableAndReproducibleSettings = true;
+    };
+    bat = {
+      enable = true;
+      config.pager = "ov --quit-if-one-screen";
+    };
     firefox = {
       enableWithOpinionatedConfig = true;
-      enableMutableSymlinks = true;
+      mutableAndReproducibleSettings = true;
     };
+    fish.enableWithOpinionatedConfig = true;
     git = {
       enableWithOpinionatedConfig = true;
       settings.user = {
@@ -17,8 +27,15 @@
         email = "florian.hartung@dlr.de";
       };
     };
+    ov = {
+      enableWithOpinionatedConfig = true;
+      package = pkgs-unstable.ov;
+    };
     ssh.enableWithOpinionatedConfig = true;
-    zed-editor.enableMutableSymlinks = true;
+    zed-editor = {
+      enableWithOpinionatedConfig = true;
+      mutableAndReproducibleUserSettings = true;
+    };
   };
 
   # TODO: merge into programs
@@ -55,6 +72,10 @@
   home.sessionVariables = {
     ELECTRON_OZONE_PLATFORM_HINT = "wayland"; # for vscodium
   };
+
+  # This is the directory where those diffs of mutable dotfiles will go, before
+  # they are overwritten during home activation.
+  mutableReproducibleConfig.backupDirectoryForDiffs = "${config.xdg.configHome}/home-manager/modules/home/backup-diffs/";
 
   # Welcome to the corner of stuff that is never really touched :D
   imports = [ ../modules/home ];

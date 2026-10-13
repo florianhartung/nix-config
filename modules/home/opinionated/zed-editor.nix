@@ -94,7 +94,7 @@ import ./mkEnableWithOpinionatedConfigModule.nix { inherit config lib; } [ "prog
         show_background = false;
         enabled = true;
       };
-      load_direnv = "shell_hook";
+      load_direnv = "direct";
       gutter = {
         line_numbers = true;
         runnables = false;

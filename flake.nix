@@ -122,7 +122,10 @@
         };
         "hart_fo" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ ./users/work.nix ];
+          modules = [
+            ./users/work.nix
+            mutable-reproducible-config.homeModules.default
+          ];
           extraSpecialArgs = {
             inherit
               inputs
