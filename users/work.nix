@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-2505,
   ...
 }:
 {
@@ -38,11 +39,11 @@
     unzip
 
     # programs
-    # BROKEN: citrix_workspace
     dconf-editor
     element-desktop
     mattermost-desktop
     obsidian
+    pkgs-2505.citrix_workspace # # BROKEN,INSECURE: on 26.05
     thunderbird
     yubioath-flutter
 

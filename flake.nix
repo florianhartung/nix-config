@@ -123,7 +123,14 @@
         "hart_fo" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ ./users/work.nix ];
-          extraSpecialArgs = { inherit inputs pkgs-unstable project-lib; };
+          extraSpecialArgs = {
+            inherit
+              inputs
+              pkgs-2505
+              pkgs-unstable
+              project-lib
+              ;
+          };
         };
       };
 
