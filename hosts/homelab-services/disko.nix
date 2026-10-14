@@ -39,7 +39,7 @@ in
           };
         };
         root = {
-          end = "-2G";
+          size = "100%";
           content = {
             type = "btrfs";
             subvolumes = {
@@ -51,16 +51,14 @@ in
                 inherit mountOptions;
                 mountpoint = "/persist";
               };
+              "swap" = {
+                mountpoint = "/.swapvol";
+                swap = {
+                  swapfile.size = "2GB";
+                };
+              };
             }
             // subvolumes;
-          };
-        };
-        swap = {
-          # move swapfile into btrfs?
-          size = "100%"; # 2G
-          content = {
-            type = "swap";
-            randomEncryption = true;
           };
         };
       };
