@@ -3,8 +3,19 @@
   ...
 }:
 {
-  networking.hostName = "homelab-services";
-  services.openssh.enable = true;
+  networking = {
+    firewall.allowedTCPPorts = [ 8384 ]; # syncthing gui
+    hostName = "homelab-services";
+  };
+
+  services = {
+    openssh.enable = true;
+    syncthing = {
+      enable = true;
+      openDefaultPorts = true;
+      guiAddress = "0.0.0.0:8384";
+    };
+  };
 
   impermanence = {
     enable = true;
