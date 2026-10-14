@@ -97,6 +97,7 @@
           inherit system;
           modules = [
             ./hosts/desktop/configuration.nix
+            impermanence.nixosModules.default
           ];
           specialArgs = { inherit inputs; };
         };
