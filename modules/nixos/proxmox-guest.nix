@@ -5,6 +5,8 @@
 {
   imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
 
+  services.qemuGuest.enable = true;
+
   boot.loader = {
     # Proxmox stores EFI vars on a separate inaccessible disk.
     efi.canTouchEfiVariables = false;

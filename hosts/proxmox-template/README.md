@@ -1,2 +1,0 @@
-- https://pve.proxmox.com/wiki/VM_Templates_and_Clones
-- https://github.com/rharmonson/richtech/wiki/CentOS-7-1511-Minimal-oVirt-Template
