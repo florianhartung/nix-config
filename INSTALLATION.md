@@ -21,16 +21,15 @@
 8.  Over SSH or through Proxmox console, copy files and directories to persist
     like so:
     ```bash
-    FILES_TO_PERSIST=(/etc/machine-id /etc/nixos /var/lib/nixos /etc/NetworkManager/system-connections /var/log)
+    FILES_TO_PERSIST=(/etc/machine-id /etc/nixos /var/lib/nixos /var/log)
     for f in "${FILES_TO_PERSIST[@]}"; do
-      mkdir --parents /mnt/persist/$f &&
-      rmdir /mnt/persist/$f &&
       cp --no-target-directory --recursive $f /mnt/persist/$f
     done
     ```
 9.  Remove the NixOS installer ISO.
 10. Set the BIOS to OVMF (UEFI) and create an EFI disk.
-11. Boot into the VM and disable Secure Boot.
+11. Enable the QEMU Guest Agent in Options.
+12. Boot into the VM and disable Secure Boot.
 
 # Users (using Home Manager)
 

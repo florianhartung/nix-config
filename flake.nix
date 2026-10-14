@@ -110,7 +110,7 @@
             ./hosts/proxmox-template/configuration.nix
           ];
         };
-        homeserver-services = lib.nixosSystem {
+        homelab-services = lib.nixosSystem {
           inherit system;
           modules = [
             disko.nixosModules.disko
