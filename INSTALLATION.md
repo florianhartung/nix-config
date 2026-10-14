@@ -20,10 +20,13 @@
     ```
 8.  Over SSH or through Proxmox console, copy files and directories to persist
     like so:
-    ```sh
-    mkdir -p /mnt/persist/{var/lib,etc,root}
-    cp /mnt/{,persist/}etc/machine-id
-    cp -r /mnt/{,persist/}{etc/nixos,var/lib/nixos,etc/NetworkManager/system-connections,var/log}
+    ```bash
+    FILES_TO_PERSIST=(/etc/machine-id /etc/nixos /var/lib/nixos /etc/NetworkManager/system-connections /var/log)
+    for f in "${FILES_TO_PERSIST[@]}"; do
+      mkdir --parents /mnt/persist/$f &&
+      rmdir /mnt/persist/$f &&
+      cp --no-target-directory --recursive $f /mnt/persist/$f
+    done
     ```
 9.  Remove the NixOS installer ISO.
 10. Set the BIOS to OVMF (UEFI) and create an EFI disk.

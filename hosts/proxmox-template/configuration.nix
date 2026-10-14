@@ -9,7 +9,7 @@
     ../../modules/nixos
   ];
 
-  networking.hostName = "homeserver";
+  networking.hostName = "proxmox-template";
 
   # Nix stuff
   system.stateVersion = "26.05"; # NEVER CHANGE AFTER INITIAL INSTALLATION

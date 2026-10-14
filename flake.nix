@@ -102,12 +102,12 @@
           specialArgs = { inherit inputs; };
         };
 
-        homeserver = lib.nixosSystem {
+        proxmox-template = lib.nixosSystem {
           inherit system;
           modules = [
             disko.nixosModules.disko
             impermanence.nixosModules.default
-            ./hosts/homeserver/configuration.nix
+            ./hosts/proxmox-template/configuration.nix
           ];
         };
         homeserver-services = lib.nixosSystem {
