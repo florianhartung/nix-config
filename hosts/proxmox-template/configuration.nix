@@ -41,7 +41,6 @@
     directories = [
       "/etc/nixos"
       "/var/lib/nixos"
-      "/etc/NetworkManager/system-connections"
       "/var/log"
       "/root/.ssh"
     ];
@@ -49,7 +48,6 @@
 
   # Networking (hostname is at the very top)
   services.openssh.enable = true;
-  networking.networkmanager.enable = true;
 
   # man pages
   documentation.dev.enable = true;
