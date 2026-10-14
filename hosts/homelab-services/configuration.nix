@@ -3,34 +3,8 @@
   ...
 }:
 {
-  imports = [
-    ./disko.nix
-    ../../modules/nixos/proxmox-guest.nix
-    ../../modules/nixos
-  ];
-
   networking.hostName = "homelab-services";
-
-  # Nix stuff
-  system.stateVersion = "26.05"; # NEVER CHANGE AFTER INITIAL INSTALLATION
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
-  users.users.root = {
-    password = "root";
-    packages = with pkgs; [
-      helix
-      zellij
-      git
-      direnv
-
-      # man pages
-      man-pages
-      man-pages-posix
-    ];
-  };
+  services.openssh.enable = true;
 
   impermanence = {
     enable = true;
@@ -41,16 +15,29 @@
     directories = [
       "/etc/nixos"
       "/var/lib/nixos"
-      "/etc/NetworkManager/system-connections"
       "/var/log"
-      "/root/.ssh"
     ];
   };
 
-  # Networking (hostname is at the very top)
-  services.openssh.enable = true;
-  networking.networkmanager.enable = true;
+  users.users.root = {
+    password = "root";
+    packages = with pkgs; [
+      helix
+      zellij
+      git
+      direnv
+    ];
+  };
 
-  # man pages
-  documentation.dev.enable = true;
+  # Welcome to the corner of stuff that is never really touched :D
+  imports = [
+    ./disko.nix
+    ../../modules/nixos/proxmox-guest.nix
+    ../../modules/nixos
+  ];
+  system.stateVersion = "26.05"; # NEVER CHANGE AFTER INITIAL INSTALLATION
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 }
