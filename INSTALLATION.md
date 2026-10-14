@@ -27,7 +27,7 @@
     ```
 9.  Remove the NixOS installer ISO.
 10. Set the BIOS to OVMF (UEFI) and create an EFI disk.
-11.  Boot into the VM and disable Secure Boot.
+11. Boot into the VM and disable Secure Boot.
 
 # Users (using Home Manager)
 

@@ -109,6 +109,14 @@
             ./hosts/homeserver/configuration.nix
           ];
         };
+        homeserver-services = lib.nixosSystem {
+          inherit system;
+          modules = [
+            disko.nixosModules.disko
+            impermanence.nixosModules.default
+            ./hosts/homelab-services/configuration.nix
+          ];
+        };
       };
       homeConfigurations = {
         "flo" = home-manager.lib.homeManagerConfiguration {
