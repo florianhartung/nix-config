@@ -157,6 +157,26 @@
         "type": "github"
       }
     },
+    "hytale-server-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772730898,
+        "narHash": "sha256-zOJWtPArzALiACP2xXZAxpPR9DjhH7ceiFWnSo/d1C8=",
+        "owner": "kaolin",
+        "repo": "hytale-server-nix",
+        "rev": "fffcb7b62477ba2a974b0c00e53add253b4320c5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kaolin",
+        "repo": "hytale-server-nix",
+        "type": "github"
+      }
+    },
     "impermanence": {
       "inputs": {
         "home-manager": [],
@@ -321,6 +341,7 @@
         "disko": "disko",
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
+        "hytale-server-nix": "hytale-server-nix",
         "impermanence": "impermanence",
         "lanzaboote": "lanzaboote",
         "mutable-reproducible-config": "mutable-reproducible-config",

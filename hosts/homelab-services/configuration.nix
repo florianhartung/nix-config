@@ -1,5 +1,7 @@
 {
+  config,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -9,11 +11,46 @@
   };
 
   services = {
-    openssh.enable = true;
-    syncthing = {
+    openssh = {
       enable = true;
+      settings.PasswordAuthentication = true;
+      settings.PermitRootLogin = "yes";
+    };
+    syncthing = {
+      enable = false;
       openDefaultPorts = true;
       guiAddress = "0.0.0.0:8384";
+    };
+    hytale-server = {
+      enable = true;
+      serverJar = "/var/lib/hytale-server/Server/HytaleServer.jar";
+      assetsZip = "/var/lib/hytale-server/Assets.zip";
+      jvmOpts = "-Xms13G -Xmx13G";
+    };
+  };
+  programs.screen = {
+    enable = true;
+    screenrc = ''
+      multiuser on
+    '';
+  };
+
+  users.users.hytale.isSystemUser = lib.mkForce false;
+  users.users.hytale.isNormalUser = lib.mkForce true;
+  systemd.services.hytale-server = {
+    preStart = lib.mkForce ""; # I moved the Assets.zip/HytaleServer.jar files into the correct places already.
+    serviceConfig = {
+        Sockets = "foo.socket";
+        StandardInput = "socket";
+        StandardOutput = "journal";
+        StandardError = "journal";
+    };
+  };
+  systemd.sockets.foo = {
+    name = "foo.socket";
+    socketConfig = {
+      ListenFIFO = "%t/foo.stdin";
+      Service = "hytale-server.service";
     };
   };
 
@@ -27,6 +64,8 @@
       "/etc/nixos"
       "/var/lib/nixos"
       "/var/log"
+      "/var/lib/syncthing"
+      "/var/lib/hytale-server"
     ];
   };
 
@@ -38,6 +77,7 @@
       git
       direnv
     ];
+
   };
 
   # Welcome to the corner of stuff that is never really touched :D

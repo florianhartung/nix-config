@@ -36,6 +36,10 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hytale-server-nix = {
+      url = "github:kaolin/hytale-server-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # for home manager
     home-manager = {
@@ -115,6 +119,7 @@
           modules = [
             disko.nixosModules.disko
             impermanence.nixosModules.default
+            inputs.hytale-server-nix.nixosModules.default
             ./hosts/homelab-services/configuration.nix
           ];
         };
