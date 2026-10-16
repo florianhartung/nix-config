@@ -25,7 +25,7 @@
       enable = true;
       serverJar = "/var/lib/hytale-server/Server/HytaleServer.jar";
       assetsZip = "/var/lib/hytale-server/Assets.zip";
-      jvmOpts = "-Xms13G -Xmx13G";
+      jvmOpts = "-Xms2G -Xmx16G";
     };
   };
   programs.screen = {
@@ -35,8 +35,6 @@
     '';
   };
 
-  users.users.hytale.isSystemUser = lib.mkForce false;
-  users.users.hytale.isNormalUser = lib.mkForce true;
   systemd.services.hytale-server = {
     preStart = lib.mkForce ""; # I moved the Assets.zip/HytaleServer.jar files into the correct places already.
     serviceConfig = {
@@ -59,6 +57,10 @@
     devPath = "/dev/sda2";
     files = [
       "/etc/machine-id"
+      "/etc/ssh/ssh_host_rsa_key"
+      "/etc/ssh/ssh_host_rsa_key.pub"
+      "/etc/ssh/ssh_host_ed25519_key"
+      "/etc/ssh/ssh_host_ed25519_key.pub"
     ];
     directories = [
       "/etc/nixos"
@@ -66,16 +68,21 @@
       "/var/log"
       "/var/lib/syncthing"
       "/var/lib/hytale-server"
+      "/root"
     ];
   };
 
   users.users.root = {
     password = "root";
     packages = with pkgs; [
+      # terminal
       helix
       zellij
       git
       direnv
+
+      # admin
+      btop
     ];
 
   };
