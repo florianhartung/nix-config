@@ -23,9 +23,9 @@
     };
     hytale-server = {
       enable = true;
-      serverJar = "/var/lib/hytale-server/Server/HytaleServer.jar";
-      assetsZip = "/var/lib/hytale-server/Assets.zip";
-      jvmOpts = "-Xms2G -Xmx16G";
+      serverJar = "/var/lib/hytale-server/setup/hytale-downloader/Server/HytaleServer.jar";
+      assetsZip = "/var/lib/hytale-server/setup/hytale-downloader/Assets.zip";
+      jvmOpts = "-Xms2G -Xmx16G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200";
     };
   };
   programs.screen = {
@@ -36,7 +36,6 @@
   };
 
   systemd.services.hytale-server = {
-    preStart = lib.mkForce ""; # I moved the Assets.zip/HytaleServer.jar files into the correct places already.
     serviceConfig = {
         Sockets = "foo.socket";
         StandardInput = "socket";
