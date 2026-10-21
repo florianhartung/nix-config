@@ -32,9 +32,9 @@
       package = pkgs-unstable.ov;
     };
     ssh.enableWithOpinionatedConfig = true;
-    zed-editor = {
+    gram = {
       enableWithOpinionatedConfig = true;
-      mutableAndReproducibleUserSettings = true;
+      mutableAndReproducibleSettings = true;
     };
 
     # other stuff

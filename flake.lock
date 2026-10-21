@@ -137,6 +137,25 @@
         "type": "github"
       }
     },
+    "home-manager-modules-unstable": {
+      "flake": false,
+      "locked": {
+        "dir": "modules",
+        "lastModified": 1792605213,
+        "narHash": "sha256-J73EBU30r2hXvHCcBtaigQDAIu/GGPYk1nc6P9THcmg=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "ab97a5d09e0f2aa7339cfd35ec5824fd6653e27c",
+        "type": "github"
+      },
+      "original": {
+        "dir": "modules",
+        "owner": "nix-community",
+        "ref": "master",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "impermanence": {
       "inputs": {
         "home-manager": [],
@@ -190,11 +209,11 @@
         "treefmt-nix": []
       },
       "locked": {
-        "lastModified": 1791190674,
-        "narHash": "sha256-BLK6VKJtTtDWKzaqwDViFdyiJgLuxWRpXds3qlaQezA=",
+        "lastModified": 1792619961,
+        "narHash": "sha256-i62Haze4LStdngcCzWFwK2HoJRBFf784t7hUtrl4FRI=",
         "owner": "florianhartung",
         "repo": "mutable-reproducible-config",
-        "rev": "ecc396054fea240d606621b5099167e7f5aef39b",
+        "rev": "844748b8349e19d9e987838cab89482b762647fc",
         "type": "github"
       },
       "original": {
@@ -300,6 +319,7 @@
         "devshell": "devshell",
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
+        "home-manager-modules-unstable": "home-manager-modules-unstable",
         "impermanence": "impermanence",
         "lanzaboote": "lanzaboote",
         "mutable-reproducible-config": "mutable-reproducible-config",

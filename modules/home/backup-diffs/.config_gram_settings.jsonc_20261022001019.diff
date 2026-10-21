@@ -1,0 +1,50 @@
+--- new config
++++ merged mutable changes
+@@ -1,26 +1,8 @@
+ {
+-  "agent": {
+-    "button": false,
+-    "dock": "right",
+-    "enable_feedback": false,
+-    "model_parameters": []
+-  },
+-  "agent_ui_font_size": 13.0,
+-  "auto_install_extensions": {
+-    "material-icon-theme": true,
+-    "nightfox": true,
+-    "nix": true,
+-    "toml": true
+-  },
+-  "auto_update": false,
+   "buffer_font_size": 13.0,
+   "buffer_font_weight": 400.0,
+   "buffer_line_height": "comfortable",
+   "cli_default_open_behavior": "existing_window",
+-  "collaboration_panel": {
+-    "button": false,
+-    "dock": "left"
+-  },
+   "debugger": {
+     "button": false
+   },
+@@ -34,10 +16,6 @@
+       "update_debounce_ms": 150
+     }
+   },
+-  "disable_ai": true,
+-  "edit_predictions": {
+-    "enabled_in_text_threads": false
+-  },
+   "git": {
+     "blame": {
+       "show_avatar": false
+@@ -74,9 +52,6 @@
+   },
+   "inline_code_actions": true,
+   "load_direnv": "direct",
+-  "notification_panel": {
+-    "button": false
+-  },
+   "outline_panel": {
+     "button": true,
+     "dock": "left",

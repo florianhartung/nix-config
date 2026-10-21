@@ -5,8 +5,8 @@
     ./firefox
     ./fish.nix
     ./git.nix
+    ./gram.nix
     ./ov
     ./ssh.nix
-    ./zed-editor.nix
   ];
 }

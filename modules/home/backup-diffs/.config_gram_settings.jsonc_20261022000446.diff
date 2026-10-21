@@ -1,0 +1,184 @@
+--- new config
++++ merged mutable changes
+@@ -1,181 +0,0 @@
+-{
+-  "agent": {
+-    "button": false,
+-    "dock": "right",
+-    "enable_feedback": false,
+-    "model_parameters": []
+-  },
+-  "agent_ui_font_size": 13.0,
+-  "auto_install_extensions": {
+-    "material-icon-theme": true,
+-    "nightfox": true,
+-    "nix": true,
+-    "toml": true
+-  },
+-  "auto_update": false,
+-  "buffer_font_size": 13.0,
+-  "buffer_font_weight": 400.0,
+-  "buffer_line_height": "comfortable",
+-  "cli_default_open_behavior": "existing_window",
+-  "collaboration_panel": {
+-    "button": false,
+-    "dock": "left"
+-  },
+-  "debugger": {
+-    "button": false
+-  },
+-  "diagnostics": {
+-    "button": false,
+-    "inline": {
+-      "enabled": true,
+-      "max_severity": null,
+-      "min_column": 0,
+-      "padding": 4,
+-      "update_debounce_ms": 150
+-    }
+-  },
+-  "disable_ai": true,
+-  "edit_predictions": {
+-    "enabled_in_text_threads": false
+-  },
+-  "git": {
+-    "blame": {
+-      "show_avatar": false
+-    },
+-    "branch_picker": {
+-      "show_author_name": true
+-    },
+-    "hunk_style": "staged_hollow",
+-    "inline_blame": {
+-      "enabled": true,
+-      "padding": 8
+-    }
+-  },
+-  "git_panel": {
+-    "button": false,
+-    "dock": "left"
+-  },
+-  "go_to_definition_fallback": "none",
+-  "gutter": {
+-    "breakpoints": false,
+-    "folds": true,
+-    "line_numbers": true,
+-    "min_line_number_digits": 4,
+-    "runnables": false
+-  },
+-  "helix_mode": true,
+-  "icon_theme": "Material Icon Theme",
+-  "inlay_hints": {
+-    "enabled": true,
+-    "show_background": false,
+-    "show_other_hints": false,
+-    "show_parameter_hints": true,
+-    "show_value_hints": true
+-  },
+-  "inline_code_actions": true,
+-  "load_direnv": "direct",
+-  "notification_panel": {
+-    "button": false
+-  },
+-  "outline_panel": {
+-    "button": true,
+-    "dock": "left",
+-    "indent_guides": {
+-      "show": "always"
+-    }
+-  },
+-  "preferred_line_length": 100,
+-  "project_panel": {
+-    "button": true,
+-    "dock": "left",
+-    "entry_spacing": "comfortable",
+-    "file_icons": true
+-  },
+-  "relative_line_numbers": "enabled",
+-  "search": {
+-    "button": false
+-  },
+-  "semantic_tokens": "combined",
+-  "show_edit_predictions": false,
+-  "show_wrap_guides": true,
+-  "soft_wrap": "none",
+-  "status_bar": {
+-    "active_language_button": false,
+-    "cursor_position_button": true
+-  },
+-  "tab_bar": {
+-    "show": true,
+-    "show_nav_history_buttons": false,
+-    "show_tab_bar_buttons": false
+-  },
+-  "tabs": {
+-    "file_icons": false,
+-    "git_status": true,
+-    "show_diagnostics": "off"
+-  },
+-  "telemetry": {
+-    "diagnostics": false,
+-    "metrics": false
+-  },
+-  "terminal": {
+-    "button": false,
+-    "dock": "right",
+-    "font_family": "JetBrains Mono",
+-    "font_size": 13.0,
+-    "font_weight": 300
+-  },
+-  "theme": "Duskfox",
+-  "theme_overrides": {
+-    "Duskfox": {
+-      "background": "#191726",
+-      "editor.background": "#191726",
+-      "editor.gutter.background": "#191726",
+-      "elevated_surface.background": "#191726",
+-      "panel.background": "#191726",
+-      "scrollbar.track.background": "#191726",
+-      "surface.background": "#191726",
+-      "syntax": {
+-        "attribute": {
+-          "color": "#D9B959"
+-        },
+-        "comment": {
+-          "color": "#6F7485",
+-          "font_style": "italic"
+-        },
+-        "comment.doc": {
+-          "color": "#8B8793"
+-        },
+-        "function": {
+-          "color": "#9896E4"
+-        },
+-        "hint": {
+-          "font_style": "italic"
+-        },
+-        "keyword": {
+-          "color": "#EA5D6D"
+-        }
+-      },
+-      "terminal.background": "#191726"
+-    }
+-  },
+-  "title_bar": {
+-    "show_branch_name": true,
+-    "show_onboarding_banner": false,
+-    "show_project_items": true,
+-    "show_sign_in": false,
+-    "show_user_picture": false
+-  },
+-  "toolbar": {
+-    "agent_review": false,
+-    "breadcrumbs": true,
+-    "code_actions": true,
+-    "quick_actions": false,
+-    "selections_menu": true
+-  },
+-  "ui_font_family": "JetBrains Mono",
+-  "ui_font_size": 13.0,
+-  "use_system_prompts": true,
+-  "wrap_guides": [
+-    100
+-  ]
+-}
