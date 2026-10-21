@@ -58,6 +58,7 @@
     # programs
     dconf-editor
     element-desktop
+    jabref
     mattermost-desktop
     obsidian
     pkgs-2505.citrix_workspace # # BROKEN,INSECURE: on 26.05
