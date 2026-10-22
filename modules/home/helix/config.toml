@@ -31,3 +31,9 @@ display-inlay-hints = true
 A-h = ":buffer-previous"
 A-l = ":buffer-next"
 A-del = ":buffer-close"
+
+[keys.normal.space]
+q = ":reflow"
+
+[keys.select.space]
+q = ":reflow"
