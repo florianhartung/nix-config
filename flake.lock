@@ -209,11 +209,11 @@
         "treefmt-nix": []
       },
       "locked": {
-        "lastModified": 1792619961,
-        "narHash": "sha256-i62Haze4LStdngcCzWFwK2HoJRBFf784t7hUtrl4FRI=",
+        "lastModified": 1792743080,
+        "narHash": "sha256-A/3Rq4ZqXWvurXJcaxCRpKsMkoX7gDbSxOAVP8p3j+s=",
         "owner": "florianhartung",
         "repo": "mutable-reproducible-config",
-        "rev": "844748b8349e19d9e987838cab89482b762647fc",
+        "rev": "ef7b5fb1f7c70e77ddc349f70e8d7e9282d73a55",
         "type": "github"
       },
       "original": {

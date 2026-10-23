@@ -34,7 +34,7 @@
     ssh.enableWithOpinionatedConfig = true;
     gram = {
       enableWithOpinionatedConfig = true;
-      mutableAndReproducibleSettings = true;
+      mutableAndReproducibleConfigs = true;
     };
 
     # other stuff
