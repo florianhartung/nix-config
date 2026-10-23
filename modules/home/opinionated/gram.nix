@@ -5,132 +5,16 @@
 }:
 import ./mkEnableWithOpinionatedConfigModule.nix { inherit config lib; } [ "programs" "gram" ] {
   programs.gram.settings = {
-    cli_default_open_behavior = "existing_window";
-    disable_ai = true;
-    show_wrap_guides = true;
-    preferred_line_length = 100;
-    wrap_guides = [ 100 ];
-    soft_wrap = "none";
-    edit_predictions = {
-      enabled_in_text_threads = false;
-    };
-    semantic_tokens = "combined";
-    agent_ui_font_size = 13.0;
-    buffer_line_height = "comfortable";
-    buffer_font_weight = 400.0;
-    use_system_prompts = true;
-    inline_code_actions = true;
-    notification_panel = {
-      button = false;
-    };
-    show_edit_predictions = false;
-    git_panel = {
-      dock = "left";
-      button = false;
-    };
-    outline_panel = {
-      indent_guides = {
-        show = "always";
-      };
-      dock = "left";
-      button = true;
-    };
-    collaboration_panel = {
-      dock = "left";
-      button = false;
-    };
+    # keep-sorted start
     auto_update = false;
-    telemetry = {
-      diagnostics = false;
-      metrics = false;
-    };
-    agent = {
-      dock = "right";
-      enable_feedback = false;
-      button = false;
-      model_parameters = [ ];
-    };
-    search = {
-      button = false;
-    };
-    status_bar = {
-      cursor_position_button = true;
-      active_language_button = false;
-    };
-    project_panel = {
-      dock = "left";
-      file_icons = true;
-      entry_spacing = "comfortable";
-      button = true;
-    };
+    buffer_font_size = 13.0;
+    buffer_font_weight = 400.0;
+    buffer_line_height = "comfortable";
+    cli_default_open_behavior = "existing_window";
     debugger = {
       button = false;
     };
-    title_bar = {
-      show_sign_in = false;
-      show_user_picture = false;
-      show_onboarding_banner = false;
-      show_project_items = true;
-      show_branch_name = true;
-    };
-    theme = "Duskfox";
-    helix_mode = true;
-    icon_theme = "Material Icon Theme";
-    ui_font_size = 13.0;
-    buffer_font_size = 13.0;
-    terminal = {
-      button = false;
-      dock = "right";
-      font_family = "JetBrains Mono";
-      font_size = 13.0;
-      font_weight = 300;
-    };
-    ui_font_family = "JetBrains Mono";
-    inlay_hints = {
-      show_other_hints = false;
-      show_parameter_hints = true;
-      show_value_hints = true;
-      show_background = false;
-      enabled = true;
-    };
-    load_direnv = "direct";
-    gutter = {
-      line_numbers = true;
-      runnables = false;
-      breakpoints = false;
-      min_line_number_digits = 4;
-      folds = true;
-    };
-    tab_bar = {
-      show = true;
-      show_nav_history_buttons = false;
-      show_tab_bar_buttons = false;
-    };
-    tabs = {
-      file_icons = false; # TODO
-      git_status = true; # TODO
-      show_diagnostics = "off"; # TODO
-    };
-    toolbar = {
-      breadcrumbs = true; # TODO
-      quick_actions = false; # TODO
-      selections_menu = true; # TODO
-      agent_review = false;
-      code_actions = true; # TODO
-    };
-    diagnostics = {
-      button = false;
-      inline = {
-        enabled = true;
-        update_debounce_ms = 150;
-        padding = 4;
-        min_column = 0;
-        max_severity = null;
-      };
-    };
     git = {
-      # git_gutter = null;
-      # gutter_debounce = null;
       branch_picker = {
         show_author_name = true;
       };
@@ -143,16 +27,73 @@ import ./mkEnableWithOpinionatedConfigModule.nix { inherit config lib; } [ "prog
       };
       hunk_style = "staged_hollow";
     };
-    go_to_definition_fallback = "none";
-
-    relative_line_numbers = "enabled";
-    auto_install_extensions = {
-      material-icon-theme = true;
-      nix = true;
-      toml = true;
-      nightfox = true;
+    git_panel = {
+      dock = "left";
+      button = false;
     };
-
+    go_to_definition_fallback = "none";
+    gutter = {
+      line_numbers = true;
+      runnables = false;
+      breakpoints = false;
+      min_line_number_digits = 4;
+      folds = true;
+    };
+    helix_mode = true;
+    icon_theme = "Material Icon Theme";
+    inlay_hints = {
+      enabled = true;
+      show_other_hints = false;
+      show_parameter_hints = true;
+      show_value_hints = true;
+      show_background = false;
+    };
+    inline_code_actions = true;
+    load_direnv = "direct";
+    outline_panel = {
+      indent_guides = {
+        show = "always";
+      };
+      dock = "left";
+      button = true;
+    };
+    preferred_line_length = 100;
+    project_panel = {
+      dock = "left";
+      file_icons = true;
+      entry_spacing = "comfortable";
+      button = true;
+    };
+    relative_line_numbers = "enabled";
+    search = {
+      button = false;
+    };
+    semantic_tokens = "combined";
+    show_edit_predictions = false;
+    show_wrap_guides = true;
+    soft_wrap = "none";
+    status_bar = {
+      cursor_position_button = true;
+      active_language_button = false;
+    };
+    tab_bar = {
+      show = true;
+      show_nav_history_buttons = false;
+      show_tab_bar_buttons = false;
+    };
+    tabs = {
+      file_icons = false; # TODO
+      git_status = true; # TODO
+      show_diagnostics = "off"; # TODO
+    };
+    terminal = {
+      button = false;
+      dock = "right";
+      font_family = "JetBrains Mono";
+      font_size = 13.0;
+      font_weight = 300;
+    };
+    theme = "Duskfox";
     theme_overrides = {
       Duskfox = {
         # Backgrounds
@@ -194,5 +135,24 @@ import ./mkEnableWithOpinionatedConfigModule.nix { inherit config lib; } [ "prog
         };
       };
     };
+    title_bar = {
+      show_sign_in = false;
+      show_user_picture = false;
+      show_onboarding_banner = false;
+      show_project_items = true;
+      show_branch_name = true;
+    };
+    toolbar = {
+      breadcrumbs = true; # TODO
+      quick_actions = false; # TODO
+      selections_menu = true; # TODO
+      agent_review = false;
+      code_actions = true; # TODO
+    };
+    ui_font_family = "JetBrains Mono";
+    ui_font_size = 13.0;
+    use_system_prompts = true;
+    wrap_guides = [ 100 ];
+    # keep-sorted end
   };
 }
