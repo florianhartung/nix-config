@@ -8,12 +8,6 @@ import ./mkEnableWithOpinionatedConfigModule.nix { inherit config lib; } [ "prog
     keymaps = [
       {
         bindings = {
-          ctrl-t = "workspace::ToggleRightDock";
-          ctrl-g = "workspace::ToggleLeftDock";
-        };
-      }
-      {
-        bindings = {
           ctrl-q = null;
         };
       }
@@ -24,27 +18,62 @@ import ./mkEnableWithOpinionatedConfigModule.nix { inherit config lib; } [ "prog
         };
       }
       {
+        context = "Workspace";
+        bindings = {
+          # keep-sorted start
+          alt-h = [
+            "workspace::IncreaseActiveDockSize"
+            {
+              "px" = 200;
+            }
+          ];
+          alt-l = [
+            "workspace::DecreaseActiveDockSize"
+            { px = 200; }
+          ];
+          ctrl-alt-- = null;
+          ctrl-g = "project_panel::ToggleFocus";
+          # keep-sorted end
+        };
+      }
+      {
+        context = "Terminal";
+        bindings = {
+          escape = "editor::ToggleFocus";
+        };
+      }
+      {
+        bindings = {
+          ctrl-t = "terminal_panel::Toggle";
+        };
+      }
+      {
         context = "vim_mode == literal";
         bindings = {
-          ctrl-g = "workspace::ToggleLeftDock";
+          ctrl-g = null;
         };
       }
-      { # Overwrite for global ctrl-g
+      {
         context = "(VimControl && !menu)";
         bindings = {
-          ctrl-g = "workspace::ToggleLeftDock";
+          ctrl-g = null;
         };
       }
-      { # Overwrite for global ctrl-g
+      {
         context = "(Editor && mode == full)";
         bindings = {
-          ctrl-g = "workspace::ToggleLeftDock";
+          ctrl-g = null;
         };
       }
-      { # Overwrite for global ctrl-g
+      {
         context = "ContextEditor > Editor";
         bindings = {
-          ctrl-g = "workspace::ToggleLeftDock";
+          ctrl-g = null;
+        };
+      }
+      {
+        context = "Workspace";
+        bindings = {
         };
       }
     ];
