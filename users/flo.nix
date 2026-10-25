@@ -7,6 +7,7 @@
 }:
 {
   programs = {
+    # keep-sorted start
     alacritty = {
       enableWithOpinionatedConfig = true;
       mutableAndReproducibleSettings = true;
@@ -27,22 +28,21 @@
         email = "60144801+florianhartung@users.noreply.github.com";
       };
     };
+    gram = {
+      enableWithOpinionatedConfig = true;
+      mutableAndReproducibleConfigs = true;
+    };
     ov = {
       enableWithOpinionatedConfig = true;
       package = pkgs-unstable.ov;
     };
     ssh.enableWithOpinionatedConfig = true;
-    gram = {
-      enableWithOpinionatedConfig = true;
-      mutableAndReproducibleConfigs = true;
-    };
-
-    # other stuff
-    gpg.enable = true;
+    # keep-sorted end
   };
 
   # TODO: merge into programs
   modules = {
+    # keep-sorted start
     discord.enable = true;
     fonts.enable = true;
     gde-stuff = {
@@ -50,38 +50,45 @@
       mouse-speed = 0.58;
     };
     vscodium.enable = true;
+    # keep-sorted end
   };
 
   home.packages = with pkgs; [
     # terminal
+    # keep-sorted start
     broot
-    wl-clipboard
     btop
     unzip
+    wl-clipboard
+    # keep-sorted end
 
     # programs
+    # keep-sorted start by_regex=(?-s)(?:pkgs.*?\.)?(.*)
+    pkgs-2505.citrix_workspace
     element-desktop
     keepassxc
     obsidian
     openconnect
     prismlauncher
-    pkgs-unstable.zulip # electron is insecure on stable (version is EOL)
     quickemu
     rssguard
     spotify
     steam
     vlc
     yubioath-flutter
-    pkgs-2505.citrix_workspace
+    pkgs-unstable.zulip # electron is insecure on stable (version is EOL)
+    # keep-sorted end
   ];
 
   services = {
+    # keep-sorted start
+    easyeffects.enable = true;
     gpg-agent = {
       enable = true;
       enableSshSupport = true;
       pinentry.package = pkgs.pinentry-gnome3;
     };
-    easyeffects.enable = true;
+    # keep-sorted end
   };
 
   # This is the directory where those diffs of mutable dotfiles will go, before
