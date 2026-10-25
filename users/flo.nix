@@ -70,6 +70,7 @@
     obsidian
     openconnect
     prismlauncher
+    pkgs-unstable.protonmail-desktop
     quickemu
     rssguard
     spotify
@@ -88,6 +89,7 @@
       enableSshSupport = true;
       pinentry.package = pkgs.pinentry-gnome3;
     };
+    protonmail-bridge.enable = true;
     # keep-sorted end
   };
 
