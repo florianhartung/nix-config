@@ -38,8 +38,8 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    home-manager-modules-unstable = {
-      url = "github:nix-community/home-manager/master?dir=modules";
+    home-manager-unstable = {
+      url = "github:nix-community/home-manager/master";
       flake = false;
     };
     firefox-addons = {
@@ -64,7 +64,7 @@
       nixpkgs-2505,
       nixpkgs-unstable,
       home-manager,
-      home-manager-modules-unstable,
+      home-manager-unstable,
       devshell,
       treefmt-nix,
       mutable-reproducible-config,
@@ -115,7 +115,7 @@
           modules = [
             ./users/flo.nix
             mutable-reproducible-config.homeModules.default
-            (import "${home-manager-modules-unstable}/programs/gram.nix")
+            (import "${home-manager-unstable}/modules/programs/gram.nix")
           ];
           extraSpecialArgs = {
             inherit
@@ -131,7 +131,7 @@
           modules = [
             ./users/work.nix
             mutable-reproducible-config.homeModules.default
-            (import "${home-manager-modules-unstable}/programs/gram.nix")
+            (import "${home-manager-unstable}/programs/gram.nix")
           ];
           extraSpecialArgs = {
             inherit

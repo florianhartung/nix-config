@@ -137,19 +137,17 @@
         "type": "github"
       }
     },
-    "home-manager-modules-unstable": {
+    "home-manager-unstable": {
       "flake": false,
       "locked": {
-        "dir": "modules",
-        "lastModified": 1792605213,
-        "narHash": "sha256-J73EBU30r2hXvHCcBtaigQDAIu/GGPYk1nc6P9THcmg=",
+        "lastModified": 1792896866,
+        "narHash": "sha256-/0tELNnhdSnP+bHSdWiEe6KpfSwi6WrTnT9cm/jNkjA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "ab97a5d09e0f2aa7339cfd35ec5824fd6653e27c",
+        "rev": "c216bf5a1f173b0481bd5c8c489ebe5595ecc68c",
         "type": "github"
       },
       "original": {
-        "dir": "modules",
         "owner": "nix-community",
         "ref": "master",
         "repo": "home-manager",
@@ -319,7 +317,7 @@
         "devshell": "devshell",
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
-        "home-manager-modules-unstable": "home-manager-modules-unstable",
+        "home-manager-unstable": "home-manager-unstable",
         "impermanence": "impermanence",
         "lanzaboote": "lanzaboote",
         "mutable-reproducible-config": "mutable-reproducible-config",
