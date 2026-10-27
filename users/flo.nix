@@ -36,6 +36,14 @@
       enableWithOpinionatedConfig = true;
       package = pkgs-unstable.ov;
     };
+    qalculate = {
+      enable = true;
+      settings = {
+        Mode = {
+          calculate_as_you_type = 1;
+        };
+      };
+    };
     ssh.enableWithOpinionatedConfig = true;
     # keep-sorted end
   };
