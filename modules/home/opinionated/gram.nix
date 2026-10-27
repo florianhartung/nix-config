@@ -37,12 +37,6 @@ import ./mkEnableWithOpinionatedConfigModule.nix { inherit config lib; } [ "prog
         };
       }
       {
-        context = "Terminal";
-        bindings = {
-          escape = "editor::ToggleFocus";
-        };
-      }
-      {
         bindings = {
           ctrl-t = "terminal_panel::Toggle";
         };
