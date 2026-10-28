@@ -75,7 +75,7 @@
     pkgs-2505.citrix_workspace
     element-desktop
     keepassxc
-    obsidian
+    pkgs-unstable.obsidian
     openconnect
     prismlauncher
     pkgs-unstable.protonmail-desktop
