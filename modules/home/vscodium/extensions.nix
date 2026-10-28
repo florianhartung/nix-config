@@ -14,6 +14,7 @@ with pkgs.vscode-extensions;
   bradlc.vscode-tailwindcss # tailwindcss
   redhat.vscode-yaml # yaml
   valentjn.vscode-ltex # grammar checker for latex (might work for Typst aswell)
+  leanprover.lean4 # Lean
 
   # Themes
   github.github-vscode-theme
