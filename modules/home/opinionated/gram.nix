@@ -120,6 +120,14 @@ import ./mkEnableWithOpinionatedConfigModule.nix { inherit config lib; } [ "prog
         show_background = false;
       };
       inline_code_actions = true;
+      languages = {
+        Nix = {
+          language_servers = [
+            "!nil"
+            "nixd"
+          ];
+        };
+      };
       load_direnv = "direct";
       outline_panel = {
         indent_guides = {
