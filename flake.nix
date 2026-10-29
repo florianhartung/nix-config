@@ -131,7 +131,7 @@
           modules = [
             ./users/work.nix
             mutable-reproducible-config.homeModules.default
-            (import "${home-manager-unstable}/programs/gram.nix")
+            (import "${home-manager-unstable}/modules/programs/gram.nix")
           ];
           extraSpecialArgs = {
             inherit

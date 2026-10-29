@@ -1,10 +1,12 @@
 {
   lib,
   config,
+  pkgs-unstable,
   ...
 }:
 import ./mkEnableWithOpinionatedConfigModule.nix { inherit config lib; } [ "programs" "gram" ] {
   programs.gram = {
+    package = pkgs-unstable.gram;
     keymaps = [
       {
         bindings = {
