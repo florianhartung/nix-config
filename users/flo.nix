@@ -72,7 +72,7 @@
 
     # programs
     # keep-sorted start by_regex=(?-s)(?:pkgs.*?\.)?(.*)
-    pkgs-2505.citrix_workspace
+    # pkgs-2505.citrix_workspace
     element-desktop
     keepassxc
     pkgs-unstable.obsidian
