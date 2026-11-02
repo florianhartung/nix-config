@@ -22,6 +22,11 @@ import ./mkEnableWithOpinionatedConfigModule.nix { inherit config lib; } [ "prog
         User = "git";
         IdentityFile = "~/.ssh/codeberg";
       };
+      "ibr-gl" = {
+        HostName = "gitlab.ibr.cs.tu-bs.de";
+        User = "git";
+        IdentityFile = "~/.ssh/ibr-gitlab";
+      };
     };
   };
 }
