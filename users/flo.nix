@@ -74,7 +74,9 @@
     # keep-sorted start by_regex=(?-s)(?:pkgs.*?\.)?(.*)
     # pkgs-2505.citrix_workspace
     element-desktop
+    kdePackages.okular
     keepassxc
+    nix-search
     pkgs-unstable.obsidian
     openconnect
     prismlauncher
@@ -88,6 +90,9 @@
     pkgs-unstable.zulip # electron is insecure on stable (version is EOL)
     # keep-sorted end
   ];
+  home.shellAliases = {
+    "s" = "nix-search";
+  };
 
   services = {
     # keep-sorted start
