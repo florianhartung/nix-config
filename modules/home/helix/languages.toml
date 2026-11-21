@@ -6,8 +6,14 @@ config = { exportPdf = "onType", formatterMode = "typstyle" }
 name = "rust"
 formatter = { command = "rustfmt" }
 auto-format = true
-
-
 [language-server.rust-analyzer.config]
 checkOnSave = { command = "clippy", extraArgs = ["--", "-w", "clippy::pendantic"] }
 procMacro = { enable = true }
+
+[[language]]
+name = "markdown"
+formatter = { command = "mdformat", args = ["--wrap=80", "--number", "-"] }
+
+[[language]]
+name = "nix"
+formatter = { command = "nixfmt", args = ["--filename=%{buffer_name}", "--strict", "-"] }
